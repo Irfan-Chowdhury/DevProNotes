@@ -2,9 +2,9 @@
 
 Click on the headings below to navigate to the corresponding files:
 
-- [File 1](file1.md)
+- [File 1](pages/file1.md)
 
-- [File 2](file2.md)
+- [File 2](pages/file2.md)
 
 ## File 1
 
