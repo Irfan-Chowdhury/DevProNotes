@@ -1,6 +1,6 @@
-<div>
-# Linux Virtualhost Setup
+<div align='center'>
 
+# Linux Virtualhost Setup
 </div>
 
 ## Primary Setup
