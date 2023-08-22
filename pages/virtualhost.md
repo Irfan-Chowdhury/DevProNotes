@@ -71,3 +71,25 @@
     ```
     php artisan config:clear
     ```
+
+## Rename the Configuration File
+
+1. Run this command
+    ```
+    sudo mv /etc/apache2/sites-available/peoplepro.test.conf /etc/apache2/sites-available/newname.conf
+    ```
+
+2. Update the Virtual Host Configuration
+    ```
+    sudo nano /etc/apache2/sites-available/newname.conf
+    ```
+
+3. Enable the Updated Virtual Host
+    ```
+    sudo a2ensite newname.conf
+    ```
+
+4. Restart Apache
+    ```
+    sudo service apache2 restart
+    ```
