@@ -12,7 +12,7 @@
 
 2. Add the following line to the hosts file
     ```
-    127.0.0.1 peopleprosaas.test
+    127.0.0.1 peopleprosjaas.test
     ```
 3. Configure the Virtual Host (Apache)
     ```
@@ -50,3 +50,24 @@
     php artisan config:clear
     ```
 
+## Return Back Default
+
+1. Remove the Custom Domain from the Hosts File
+    ```
+    sudo nano /etc/hosts
+    ```
+
+2. Disable the Virtual Host (Apache)
+    ```
+    sudo a2dissite peopleprosaas.conf
+    ```
+
+3. Restart Apache
+    ```
+    sudo service apache2 restart
+    ```
+
+4. Clear Laravel Configuration Cache (Optional)
+    ```
+    php artisan config:clear
+    ```
