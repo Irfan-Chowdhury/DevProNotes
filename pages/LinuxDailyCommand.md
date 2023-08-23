@@ -50,8 +50,9 @@
 https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed-please-use-a-personal
 
 ## /varwww/html file permission access.
+```
 sudo chmod 777 /var/www/html -R
-
+```
 ## To Give Directory and it’s all files permission access 
 `sudo chmod -R a+rwx /path/to/folder` to give permissions to the selected folder and its files.
 
