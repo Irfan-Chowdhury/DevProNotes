@@ -31,13 +31,11 @@ You can not create sub-domain through the Multi Tenancy but you can create a `Wi
 - Search and goto `Domains`. And create a new domain by clicking on `Create A New Domain` button.
 ![Domains Page](https://snipboard.io/ZstM8Q.jpg)
 
-- (i) You have to set a domain name and according to this format : <b>`*.your-domain-name.com`</b> 
-<br>
-(ii)  And also set "Document Root" name and you have to write <b>`public_html`</b>
-<br>
+- (i) You have to set a domain name and according to this format : <b>`*.your-domain-name.com`</b>. <br>
+(ii)  And also set "Document Root" name and you have to write <b>`public_html`</b>  <br>
 (iii) After completing to do this, then click on `Submit` button.
 ![Domains Page](https://snipboard.io/WV5rpz.jpg)
-
+ <br>
 
 - A new domain will be created.
 ![New Domain Created](https://snipboard.io/vyzCMm.jpg)
