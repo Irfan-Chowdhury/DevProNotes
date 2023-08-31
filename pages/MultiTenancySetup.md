@@ -51,6 +51,11 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 ```
 Please note: if you have the models anywhere else, you should adjust the code and commands of this tutorial accordingly.
 
+
+But if want to customize the tenant table then you can follow this - 
+<img src="https://snipboard.io/WvbRyY.jpg">
+
+
 ## PeopleProSAAS - Setup Guideline
 
 ### (.env) file setup
@@ -70,7 +75,7 @@ DB_PASSWORD=irfan95
 
 LANDLORD_DB=peoplepro_landlord
 ```
-
+API_KEY, USER_NAME, PREFIX and othres modification will be applicable during deploy on the cPanel Server.
 
 ### config/database.php
 Goto `config/database.php` then create two more connections like <b>mysql</b>.
@@ -124,7 +129,7 @@ Goto `config/database.php` then create two more connections like <b>mysql</b>.
 ### config/tenancy.php
 Now we need to tell the package to use this custom model. Open the `config/tenancy.php` file and modify the line below:
 
-<img src="https://snipboard.io/fdvNzs.jpg">
+<img src="https://snipboard.io/5lPwk3.jpg">
 
 Please look the `#Modified` word. I have to update these line.
 
