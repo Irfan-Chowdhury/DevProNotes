@@ -106,4 +106,4 @@ public function createDatabase(TenantWithDatabase $tenant): bool
 #### Done. Run Your App
 
 ## Credits
-- Helped by [Ashfaqur Rahman](https://github.com/ashfaqdev)
+- Guided by [Ashfaqur Rahman](https://github.com/ashfaqdev)
