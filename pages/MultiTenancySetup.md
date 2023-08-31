@@ -32,7 +32,7 @@ App\Providers\TenancyServiceProvider::class,
 ```
 
 ## Creating a tenant model
-Now you need to create a Tenant model. Create the file `app/Models/Tenant.php`.
+Now you need to create a Tenant model. Create the file using `php artisan make:model Tenant`.
 
 ```
 <?php
@@ -53,14 +53,6 @@ Please note: if you have the models anywhere else, you should adjust the code an
 
 ## PeopleProSAAS - Setup Guideline
 
-### config/tenancy.php
-Now we need to tell the package to use this custom model. Open the `config/tenancy.php` file and modify the line below:
-
-
-<img src="https://snipboard.io/fdvNzs.jpg">
-
-Please look the `#Modified` word. I have to update these line.
-
 ### (.env) file setup
 I was added and modified the environment variable.
 ```
@@ -78,6 +70,7 @@ DB_PASSWORD=irfan95
 
 LANDLORD_DB=peoplepro_landlord
 ```
+
 
 ### config/database.php
 Goto `config/database.php` then create two more connections like <b>mysql</b>.
@@ -128,21 +121,13 @@ Goto `config/database.php` then create two more connections like <b>mysql</b>.
 ],
 ```
 
-### TenancyServiceProvider
+### config/tenancy.php
+Now we need to tell the package to use this custom model. Open the `config/tenancy.php` file and modify the line below:
 
-Goto `app/Provider/TenancyServiceProvider.php`. In the initial stage you will see the `Jobs\SeedDatabase::class` in comment. If you want to use Seeder then comment out.
+<img src="https://snipboard.io/fdvNzs.jpg">
 
+Please look the `#Modified` word. I have to update these line.
 
-then update the `mapRoutes()` method.
-```
-protected function mapRoutes()
-{
-    if (file_exists(base_path('routes/tenant.php'))) {
-        Route::namespace(static::$controllerNamespace)
-            ->group(base_path('routes/tenant.php'));
-    }
-}
-```
 
 ### Kernel.php
 Goto `app/Http/Kernel.php` and then add `universel` array in `middlewareGroups` 
@@ -158,6 +143,22 @@ protected $middlewareGroups = [
     ],
     'universal' => [], // <---This line
 ];
+```
+
+### TenancyServiceProvider
+
+Goto `app/Provider/TenancyServiceProvider.php`. In the initial stage you will see the `Jobs\SeedDatabase::class` in comment. If you want to use Seeder then comment out.
+
+
+then update the `mapRoutes()` method.
+```
+protected function mapRoutes()
+{
+    if (file_exists(base_path('routes/tenant.php'))) {
+        Route::namespace(static::$controllerNamespace)
+            ->group(base_path('routes/tenant.php'));
+    }
+}
 ```
 
 ### RouteServiceProvider
@@ -219,9 +220,16 @@ public function boot(): void
 ```
 
 ### routes/tenant.php
-Just put the code before your existing code .
+During install the package, a route file name `routes/tenant.php` will be created automatically. Just move your `web.php` file code to `tenant.php`. But before use this codes (already some codes will exists) and paste your code in group block. 
 
 ```
+declare(strict_types=1);
+
+use Illuminate\Support\Facades\Route;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
+
+
 Route::middleware(['XSS', 'web',InitializeTenancyByDomain::class, PreventAccessFromCentralDomains::class])->group(function () {
     
     // Your existing route code
@@ -244,5 +252,27 @@ Goto `resources/views/layout/main.blade.php`. Here your all existing includes fi
 <script type="text/javascript" src="{{ asset('../../vendor/datatable/datatable.responsive.boostrap.min.js') }}"></script>
 ```
 
-Credits
+By the you don't worry about Landlord part. It will work as usual a Laravel app work.
+
+### Usages
+In any controller just use this piece of codes.
+
+```
+public function create()
+{
+    //creating tenant
+    $tenant = Tenant::create(['id' => $request->tenant]);
+    $tenant->domains()->create(['domain' => $request->tenant.'.'.env('CENTRAL_DOMAIN')]); // This Line
+
+    $tenant->run(function ($tenant) use ($request) { 
+        
+        // your code 
+        // Here if you pass any default data to tenant related tables;
+    });
+}
+```
+
+#### <i>All Done !! Now run your app in your local machine</i>
+
+## Credits
 - Guided by [Ashfaqur Rahman](https://github.com/ashfaqdev)
