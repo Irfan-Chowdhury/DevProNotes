@@ -280,4 +280,5 @@ public function create()
 #### <i>All Done !! Now run your app in your local machine</i>
 
 ## Credits
-- Guided by [Ashfaqur Rahman](https://github.com/ashfaqdev)
+- Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/)
+- Guided by : [Ashfaqur Rahman](https://github.com/ashfaqdev)
