@@ -6,7 +6,14 @@
 ## What is multi-tenancy ? 
 Multi-tenancy is a software architecture and design approach that allows a single software application to serve multiple, separate, and independent clients, known as "tenants." Each tenant typically operates in isolation from one another, with their own data, configurations, and user accounts, despite using the same underlying software instance. This approach is commonly used in various types of software, including web applications, databases, and cloud services. This is the ability to provide your service to multiple users (tenants) from a single hosted instance of the application. This is contrasted with deploying the application separately for each user. 
 
-## Installation
+## Virtual Host Setup
+Before setup the SaaS in your project, please setup the virtual host first.
+
+- For linux machine, please follow this article : [Linux Virtualhost Setup](https://github.com/Irfan-Chowdhury/DevProTips/blob/main/pages/virtualhost.md)
+
+- For windows, there are so many resources on youtube, google. Please check.
+
+## Package Installation
 First, require the package using composer:
 ```
 composer require stancl/tenancy
@@ -280,5 +287,5 @@ public function create()
 #### <i>All Done !! Now run your app in your local machine</i>
 
 ## Credits
-- Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/)
+- Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/) ||  [Adding multi tenancy to an existing Laravel web application](https://www.youtube.com/watch?v=BitZhTeLgR4)
 - Guided by : [Ashfaqur Rahman](https://github.com/ashfaqdev)
