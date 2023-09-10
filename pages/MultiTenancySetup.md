@@ -285,10 +285,14 @@ public function create()
 ```
 
 ## Some General Commands
+### Tenant list
 - To check all tenants list 
     ```bash
     php artisan tenants:list
     ```
+### Rollback & Seed
+- Rollback :  `php artisan tenants:rollback`
+- Seed : `php artisan tenants:seed`
 
 ### Tenant migrate from central 
 - You can run tenant migrations using the command : 
@@ -319,10 +323,12 @@ public function create()
         '--tenants' => [$tenant->id]
     ]);
     ```
- - Reference : https://tenancyforlaravel.com/docs/v2/tenant-migrations/
+
 
 #### <i>Done !! Now run your app in your local machine</i>
 
 ## Credits
 - Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/) ||  [Adding multi tenancy to an existing Laravel web application](https://www.youtube.com/watch?v=BitZhTeLgR4)
+ - Reference Migrations: https://tenancyforlaravel.com/docs/v2/tenant-migrations/
+ -Reference Console Commands: https://tenancyforlaravel.com/docs/v2/console-commands/
 - Guided by : [Ashfaqur Rahman](https://github.com/ashfaqdev)
