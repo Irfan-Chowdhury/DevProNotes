@@ -58,50 +58,81 @@ You will see the deafult code of Package.
 - Now, you have to replace the code given below. Screenshot :
 ![New Code](https://snipboard.io/YRga4B.jpg)
 
-Code
-```
-public function createDatabase(TenantWithDatabase $tenant): bool
-{
-    $database = $tenant->database()->getName();
-    $charset = $this->database()->getConfig('charset');
-    $collation = $this->database()->getConfig('collation');
+- Code for create database
+    ```php
+    public function createDatabase(TenantWithDatabase $tenant): bool
+    {
+        $database = $tenant->database()->getName();
+        $charset = $this->database()->getConfig('charset');
+        $collation = $this->database()->getConfig('collation');
 
-    //setting the curl headers
-    $headers = array(
-        "Authorization: cpanel ".env('CPANEL_USER_NAME').":".env('CPANEL_API_KEY'),
-        "Content-Type: text/plain"
-    );
+        //setting the curl headers
+        $headers = array(
+            "Authorization: cpanel ".env('CPANEL_USER_NAME').":".env('CPANEL_API_KEY'),
+            "Content-Type: text/plain"
+        );
 
-    //custom code for creating DB in a cPanel based server
-    $url = "https://".env('CENTRAL_DOMAIN').":2083/execute/Mysql/create_database?name=".$database;
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    //for debug only!
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    curl_exec($curl);
-    curl_close($curl);
+        //custom code for creating DB in a cPanel based server
+        $url = "https://".env('CENTRAL_DOMAIN').":2083/execute/Mysql/create_database?name=".$database;
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        //for debug only!
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_exec($curl);
+        curl_close($curl);
 
-    //custom code for assigning user to DB in a cPanel based server
-    $url = "https://".env('CENTRAL_DOMAIN').":2083/execute/Mysql/set_privileges_on_database?user=".env('DB_USERNAME')."&database=".$database."&privileges=ALL";
+        //custom code for assigning user to DB in a cPanel based server
+        $url = "https://".env('CENTRAL_DOMAIN').":2083/execute/Mysql/set_privileges_on_database?user=".env('DB_USERNAME')."&database=".$database."&privileges=ALL";
 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_URL, $url);
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    //for debug only!
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-    curl_exec($curl);
-    curl_close($curl);
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        //for debug only!
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_exec($curl);
+        curl_close($curl);
 
-    return true;
-}
-```
+        return true;
+    }
+    ```
+
+- Code For Delete Database 
+
+    ```php
+        public function deleteDatabase(TenantWithDatabase $tenant): bool
+        {
+            $database = $tenant->database()->getName();
+            $charset = $this->database()->getConfig('charset');
+            $collation = $this->database()->getConfig('collation');
+
+            $headers = array(
+            "Authorization: cpanel ".env('CPANEL_USER_NAME').":".env('CPANEL_API_KEY'),
+            "Content-Type: text/plain"
+            );
+
+            //custom code for creating DB in a cPanel based server
+            $url = "https://".env('CENTRAL_DOMAIN').":2083/execute/Mysql/delete_database?name=".$database;
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            //for debug only!
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_exec($curl);
+            curl_close($curl);
+
+            return true;
+        }
+    ```
 
 #### Done. Run Your App
 

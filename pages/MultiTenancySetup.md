@@ -15,22 +15,22 @@ Before setup the SaaS in your project, please setup the virtual host first.
 
 ## Package Installation
 First, require the package using composer:
-```
+```bash
 composer require stancl/tenancy
 ```
 
 Then, run the tenancy:install command:
-```
+```bash
 php artisan tenancy:install
 ```
 
 Let's run the migrations:
-```
+```bash
 php artisan migrate
 ```
 
 Register the service provider in `config/app`.php. Make sure it's on the same position as in the code snippet below:
-```
+```php
 /*
  * Application Service Providers...
  */
@@ -41,7 +41,7 @@ App\Providers\TenancyServiceProvider::class,
 ## Creating a tenant model
 Now you need to create a Tenant model. Create the file using `php artisan make:model Tenant`.
 
-```
+```php
 <?php
 
 namespace App\Models;
@@ -67,7 +67,7 @@ But if want to customize the tenant table then you can follow this -
 
 ### (.env) file setup
 I was added and modified the environment variable.
-```
+```bash
 CENTRAL_DOMAIN=peopleprosaas.test
 CPANEL_API_KEY=
 CPANEL_USER_NAME=
@@ -88,7 +88,7 @@ API_KEY, USER_NAME, PREFIX and othres modification will be applicable during dep
 Goto `config/database.php` then create two more connections like <b>mysql</b>.
 
 1. One is for Landlord
-```
+```php
 'peopleprosaas_landlord' => [
     'driver' => 'mysql',
     'url' => env('DATABASE_URL'),
@@ -111,7 +111,7 @@ Goto `config/database.php` then create two more connections like <b>mysql</b>.
 ```
 
 2. Another is for tenant.
-```
+```php
 'peopleprosaas_tenant' => [
     'driver' => 'mysql',
     'url' => env('DATABASE_URL'),
@@ -144,7 +144,7 @@ Please look the `#Modified` word. I have to update these line.
 ### Kernel.php
 Goto `app/Http/Kernel.php` and then add `universel` array in `middlewareGroups` 
 
-```
+```php
 protected $middlewareGroups = [
     'web' => [
         ...
@@ -163,7 +163,7 @@ Goto `app/Provider/TenancyServiceProvider.php`. In the initial stage you will se
 
 
 then update the `mapRoutes()` method.
-```
+```php
 protected function mapRoutes()
 {
     if (file_exists(base_path('routes/tenant.php'))) {
@@ -176,7 +176,7 @@ protected function mapRoutes()
 ### RouteServiceProvider
 Goto `app/Provider/RouteServiceProvider.php` and then configure your code like below - 
 
-```
+```php
 public function boot()
 {
     $this->mapApiRoutes();
@@ -216,7 +216,7 @@ protected function mapApiRoutes()
 
 This is my another custom service provider. The GeneralSeting exists in both landlord and tenant. So need identify the host first and then fetch the actual data and share with anothers necessary files. Otherwise it'll give errors.
 
-```
+```php
 public function boot(): void
 {
     if (Schema::hasTable('general_settings') && in_array(request()->getHost(), config('tenancy.central_domains'))) {
@@ -234,7 +234,7 @@ public function boot(): void
 ### routes/tenant.php
 During install the package, a route file name `routes/tenant.php` will be created automatically. Just move your `web.php` file code to `tenant.php`. But before use this codes (already some codes will exists) and paste your code in group block. 
 
-```
+```php
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
@@ -252,7 +252,7 @@ Route::middleware(['XSS', 'web',InitializeTenancyByDomain::class, PreventAccessF
 ### main.blade.php (Tenant)
 Goto `resources/views/layout/main.blade.php`. Here your all existing includes file path have to be changed. Just add `../../` before your original path. Example :
 
-```
+```php
 # Normal Image File
 <link rel="icon" type="image/png" href="{{asset('../../images/logo/'.$general_settings->site_logo)}}"/>
 
@@ -266,10 +266,10 @@ Goto `resources/views/layout/main.blade.php`. Here your all existing includes fi
 
 By the you don't worry about Landlord part. It will work as usual a Laravel app work.
 
-### Usages
+## Usages
 In any controller just use this piece of codes.
 
-```
+```php
 public function create()
 {
     //creating tenant
@@ -284,7 +284,44 @@ public function create()
 }
 ```
 
-#### <i>All Done !! Now run your app in your local machine</i>
+## Some General Commands
+- To check all tenants list 
+    ```bash
+    php artisan tenants:list
+    ```
+
+### Tenant migrate from central 
+- You can run tenant migrations using the command : 
+    ```bash
+    php artisan tenants:migrate
+    ```
+
+- You may specify the tenant(s) using the --tenants option.
+    ```bash
+    php artisan tenants:migrate --tenants=foo 
+    ```
+
+- If you have others directory, you have to mention with path also :
+    ```bash  
+    php artisan tenants:migrate --path=database/migrations/another_directory
+    ```
+
+
+<i>Note: Tenant migrations must be located base on your desired path which you mentioned it in "config/tenancy.php".</i>
+
+
+- You can run migrations from outside the command line as well. To run migrations for a tenant in your code, use Artisan::call():
+
+    ```php
+    $tenant = Tenant::create('foo');
+
+    Artisan::call('tenants:migrate', [
+        '--tenants' => [$tenant->id]
+    ]);
+    ```
+ - Reference : https://tenancyforlaravel.com/docs/v2/tenant-migrations/
+
+#### <i>Done !! Now run your app in your local machine</i>
 
 ## Credits
 - Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/) ||  [Adding multi tenancy to an existing Laravel web application](https://www.youtube.com/watch?v=BitZhTeLgR4)
