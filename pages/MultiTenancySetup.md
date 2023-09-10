@@ -330,5 +330,5 @@ public function create()
 ## Credits
 - Reference : [Tenancy for Laravel](https://tenancyforlaravel.com/) ||  [Adding multi tenancy to an existing Laravel web application](https://www.youtube.com/watch?v=BitZhTeLgR4)
  - Reference Migrations: https://tenancyforlaravel.com/docs/v2/tenant-migrations/
- -Reference Console Commands: https://tenancyforlaravel.com/docs/v2/console-commands/
+ - Reference Console Commands: https://tenancyforlaravel.com/docs/v2/console-commands/
 - Guided by : [Ashfaqur Rahman](https://github.com/ashfaqdev)
