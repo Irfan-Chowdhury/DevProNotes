@@ -294,7 +294,7 @@ public function create()
 - Rollback :  `php artisan tenants:rollback`
 - Seed : `php artisan tenants:seed`
 
-### Tenant migrate from central 
+### Tenant Migrations 
 - You can run tenant migrations using the command : 
     ```bash
     php artisan tenants:migrate
