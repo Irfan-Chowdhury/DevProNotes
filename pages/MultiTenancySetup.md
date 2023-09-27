@@ -290,9 +290,24 @@ public function create()
     ```bash
     php artisan tenants:list
     ```
-### Rollback & Seed
+### Rollback
 - Rollback :  `php artisan tenants:rollback`
-- Seed : `php artisan tenants:seed`
+
+### Seed
+- Run all seeder in all tenants
+  ```bash
+    php artisan tenants:seed
+  ```
+  
+- Run a specific seeder in all tenants
+  ```bash
+    php artisan tenants:seed --class=GeneralSettingSeeder
+  ```
+  
+- Run a specific seeder on a specific tenant
+  ```bash
+    php artisan tenants:seed --class=GeneralSettingSeeder --tenants=foo
+  ```
 
 ### Tenant Migrations 
 - You can run tenant migrations using the command : 
