@@ -14,3 +14,5 @@ Click on the headings below to navigate to the corresponding files:
 - [How to setup multi-tenancy in cPanel Hosting Server](pages/cPanelMultiTenancySetup.md)
 
 - [Event Listener with Database Notification](pages/Event-Listener-with-Database-Notification.md)
+
+- [Event Listener with Email Notification](pages/Event-Listener-with-Email-Notification.md)
