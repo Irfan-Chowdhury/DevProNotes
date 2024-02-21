@@ -12,3 +12,5 @@ Click on the headings below to navigate to the corresponding files:
 - [How to integrate your multi-tenancy with your laravel project](pages/MultiTenancySetup.md)
 
 - [How to setup multi-tenancy in cPanel Hosting Server](pages/cPanelMultiTenancySetup.md)
+
+- [Event Listener with Database Notification](pages/Event-Listener-with-Database-Notification.md)
