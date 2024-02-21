@@ -238,12 +238,11 @@ The visible data show like that -
                     <h2>All Notifications</h2>
                 </div>
 				<div class="card-body">
-
-						@foreach($all_notification as $notification)
-							<div class="appointment-list-item">
-							<a href={{$notification->data['link']}}>{{$notification->data['data']}}</a>
-							</div>
-						@endforeach
+                    @foreach($all_notification as $notification)
+                        <div class="appointment-list-item">
+                        <a href={{$notification->data['link']}}>{{$notification->data['data']}}</a>
+                        </div>
+                    @endforeach
 
 					@if(count($all_notification) > 0)
 						<div class="text-center">
