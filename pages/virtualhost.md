@@ -12,7 +12,7 @@
 
 2. Add the following line to the hosts file
     ```
-    127.0.0.1 peopleprosjaas.test
+    127.0.0.1 peopleprosaas.test
     ```
 3. Configure the Virtual Host (Apache)
     ```
@@ -48,6 +48,11 @@
 7. Clear Config
     ```
     php artisan config:clear
+    ```
+
+8. After setup don't forget to write the central domain in `.env` in your application
+    ```
+    CENTRAL_DOMAIN=peopleprosaas.test
     ```
 
 ## Return Back Default
