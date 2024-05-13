@@ -12,3 +12,5 @@ Click on the headings below to navigate to the corresponding files:
 - [Event Listener with Database Notification](pages/Event-Listener-with-Database-Notification.md)
 
 - [Event Listener with Email Notification](pages/Event-Listener-with-Email-Notification.md)
+
+- [How to use TypeScript in Laravel](pages/TypeScriptWithLaravel.md)
