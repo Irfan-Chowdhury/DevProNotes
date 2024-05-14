@@ -6,7 +6,7 @@
 ## Requirement
 - PHP 8.1+ or higher installed on your system.
 
-## Install
+## [Install](https://pestphp.com/docs/installation)
 <b>The first step :</b> is to require Pest as a "dev" dependency in your project by running the following commands on your command line.
 
 ```bash
@@ -122,3 +122,37 @@ Now run the below command -
 #### Output : 
 
 <img src="https://snipboard.io/te0vcK.jpg">
+
+
+## [Hooks](https://pestphp.com/docs/hooks)
+Pest hooks are similar to the steps that - 
+
+
+You might take when preparing a meal - first, you gather and prepare the ingredients, then you cook the meal, and finally, you clean up after yourself. 
+
+
+In the same way, hooks allow you to perform specific actions before and after each test or file, such as setting up test data, initializing the test environment, or cleaning up resources after the tests are complete.
+
+
+Here's a list of the hooks that are available in Pest:
+1. `beforeEach()`  
+2. `afterEach()`
+3. `beforeAll()` 
+3. `afterAll()` 
+
+<br>
+<br>
+
+
+## Some Theoretical Concept
+
+<img src="https://snipboard.io/9DhAES.jpg">
+
+<img src="https://snipboard.io/X1s8AE.jpg">
+
+<img src="https://snipboard.io/neFfym.jpg">
+
+<img src="https://snipboard.io/Q1O47n.jpg">
+
+<img src="https://snipboard.io/hpRZ0L.jpg">
+
