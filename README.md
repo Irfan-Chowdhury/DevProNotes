@@ -5,12 +5,15 @@
 
 Click on the headings below to navigate to the corresponding files:
 
-- [Linux Daily Command](pages/LinuxDailyCommand.md)
+1. [How to use PEST in Laravel](pages/PEST-Laravel.md)
 
-- [Linux Virtual Host Setup](pages/virtualhost.md)
+1. [How to use TypeScript in Laravel](pages/TypeScriptWithLaravel.md)
 
-- [Event Listener with Database Notification](pages/Event-Listener-with-Database-Notification.md)
+1. [Linux Daily Command](pages/LinuxDailyCommand.md)
 
-- [Event Listener with Email Notification](pages/Event-Listener-with-Email-Notification.md)
+1. [Linux Virtual Host Setup](pages/virtualhost.md)
 
-- [How to use TypeScript in Laravel](pages/TypeScriptWithLaravel.md)
+1. [Event Listener with Database Notification](pages/Event-Listener-with-Database-Notification.md)
+
+1. [Event Listener with Email Notification](pages/Event-Listener-with-Email-Notification.md)
+
