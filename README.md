@@ -5,6 +5,11 @@
 
 Click on the headings below to navigate to the corresponding files:
 
+1. Payment Gateway Integration in Laravel
+    - [bKash](pages/bkash-integration.md)
+    <!-- - [Stripe](pages/stripe-integration.md) -->
+
+
 1. [How to use PEST in Laravel](pages/PEST-Laravel.md)
 
 1. [How to use TypeScript in Laravel](pages/TypeScriptWithLaravel.md)
