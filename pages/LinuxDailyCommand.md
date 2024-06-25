@@ -36,6 +36,13 @@
 1. PC Shutdwon: `shutdwon now`
 1. PC Restart: `sudo shutdwon -r now`
 
+## How to install any software from downloads folder
+1. `cd Downloads`
+1. `ls`
+1. `sudo apt install ./discord-0.0.47.deb`
+
+to install all software in one command : `sudo apt install docker-desktop-4.17.0-amd64.deb  firefox.tmp  microsoft-edge-dev_112.0.1702.3-1_amd64.deb`
+
 
 ## visible `.git` folder in ubuntu
 - Open the file manager or terminal on your Ubuntu system
@@ -49,12 +56,25 @@
 ## Git Clone Related issue
 https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed-please-use-a-personal
 
-## /varwww/html file permission access.
-```
-sudo chmod 777 /var/www/html -R
-```
+
 ## To Give Directory and it’s all files permission access 
 `sudo chmod -R a+rwx /path/to/folder` to give permissions to the selected folder and its files.
+
+- To Give Directory and it’s all files permission access 
+`sudo chmod -R a+rwx /path/to/folder` to give permissions to the selected folder and its files.
+
+- To change permission access to 0755 or 0644
+`chmod 0755 your_file_or_directory`
+`chmod 0644 your_file_or_directory`
+
+- To change permission access on Directory-0755 and Files – 0644
+`find /path/to/your/project -type d -exec chmod 0755 {} +`
+`find /path/to/your/project -type f -exec chmod 0644 {} +`
+
+- /varwww/html file permission access
+`sudo chmod 777 /var/www/html -R`
+
+Ref: https://stackoverflow.com/questions/50378664/permission-denied-inside-var-www-html-when-creating-a-website-and-its-files-wi
 
 ## Switch PHP Version
 - display list
@@ -129,7 +149,7 @@ sudo service mysql status
 sudo /opt/lampp/./manager-linux-x64.run
 ```
 
-## One Command before office work
+## One Command before office work (Xampp purpose)
 ```
 sudo systemctl stop apache2 && sudo service mysql stop && sudo /opt/lampp/./manager-linux-x64.run
 ```
@@ -148,6 +168,12 @@ Ref : https://stackoverflow.com/questions/68724464/docker-not-running-ubuntu-20-
 
 Ref : https://github.com/thecodeholic/php-developer-roadmap
 
+
+## How to Access any file using terminal :
+- <b>To Open :</b> sudo nano /etc/php/8.1/cli/php.ini
+- <b>To Search any word :</b> Ctrl + W (and then type the word and press ENTER)
+- <b>To Save file :</b> Ctrl + O (fille name will be shown, then press ENTER)
+- <b>To Exit from Terminal :</b> Ctrl + X
 
 ## To delete a `directory` from www : 
 ```
