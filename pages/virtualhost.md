@@ -21,7 +21,9 @@
 4. Add the following configuration to the file
     ```
     <VirtualHost *:80>
-        ServerName peoplepro.test
+        ServerName your_site_name.test
+        ServerAlias www.your_site_name.test
+            
         DocumentRoot /path/to/your/laravel/project/public
 
         <Directory /path/to/your/laravel/project/public>
@@ -30,10 +32,34 @@
             Require all granted
         </Directory>
 
-        ErrorLog ${APACHE_LOG_DIR}/peoplepro.test_error.log
-        CustomLog ${APACHE_LOG_DIR}/peoplepro.test_access.log combined
+        ErrorLog ${APACHE_LOG_DIR}/your_file_name.test_error.log
+        CustomLog ${APACHE_LOG_DIR}/your_file_name.test_access.log combined
     </VirtualHost>
     ```
+    
+    For an example - 
+
+    if your file name is "peopleprosaas.conf"
+
+    ```bash
+	<VirtualHost *:80>
+	    ServerName  peoplepro-hrm-crm.test
+	    ServerAlias www.peoplepro-hrm-crm.test
+
+	    DocumentRoot /var/www/html/peoplepro/peoplepro-hrm-crm/public
+
+	    <Directory /var/www/html/peoplepro/peoplepro-hrm-crm/public>
+		Options Indexes FollowSymLinks
+		AllowOverride All
+		Require all granted
+	    </Directory>
+
+	    ErrorLog ${APACHE_LOG_DIR}/peopleprosaas-error.log
+	    CustomLog ${APACHE_LOG_DIR}/peopleprosaas-access.log combined
+	</VirtualHost>
+
+    ```
+    
 
 5. Enable the Virtual Host
     ```
