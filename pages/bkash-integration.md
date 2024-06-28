@@ -215,8 +215,8 @@ return [
     "bkash_app_secret" => env("BKASH_TOKENIZE_APP_SECRET", ""),
     "bkash_username" => env("BKASH_TOKENIZE_USER_NAME", ""),
     "bkash_password"  => env("BKASH_TOKENIZE_PASSWORD", ""),
-    "bkash_callback_url" => env('APP_URL'). '/bkash/after-create-payment',
-    // "bkash_callback_url"  => url('/bkash/after-create-payment'),
+    // "bkash_callback_url" => env('APP_URL'). '/bkash/after-create-payment',
+    "bkash_callback_url"  => url('/bkash/callback'),
     'bkash_timezone' => 'Asia/Dhaka',
 ];
 ```
@@ -236,7 +236,7 @@ Route::controller(PaymentController::class)->group(function () {
     Route::post('payment/{payment_method}/pay/confirm', 'paymentPayConfirm')->name('payment.pay.confirm');
     Route::post('payment/{payment_method}/pay/cancel', 'paymentPayCancel')->name('payment.pay.cancel');
     //bkash
-    Route::get('/bkash/after-create-payment','bkashAfterCreatePayment');
+    Route::get('/bkash/callback','bkashCallback');
     Route::get('payment-success', 'paymentSuccess')->name('payment.success');
 });
 ```
@@ -401,7 +401,7 @@ class BkashPayment implements PaybleContract
     }
 
 
-    public function afterCreatePayment(Request $request)
+    public function callback(Request $request)
     {
         if(isset($request->paymentID)){
             if($request->status==="success") {
@@ -574,10 +574,10 @@ class PaymentController extends Controller
     |-----------
     */
 
-    public function bkashAfterCreatePayment(PaymentService $paymentService, Request $request)
+    public function bkashCallback(PaymentService $paymentService, Request $request)
     {
         $payment = $paymentService->initialize('bkash');
-        return $payment->afterCreatePayment($request);
+        return $payment->callback($request);
     }
 
     public function paymentSuccess(Request $request)
