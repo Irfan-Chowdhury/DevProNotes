@@ -104,9 +104,10 @@ Response
 ### 3. [Execute Payment](https://developer.bka.sh/docs/execute-payment-2)
 
 
-Goto the bKash Url and make payment in their site - 
+First copy the `bKashURL` and then goto the link and make payment from their site first -  
 
-sample link- 
+For an example, sample link look like- 
+
 ```bash
 https://sandbox.payment.bkash.com/?paymentId=TR0011hEN7KTZ1718449546941&hash=)gqMffGT.r.4*dLWGcc)mE_6q9U)wmmh9SI6hTlkjzNc!IFGOZZCN5Fe1I0FGRtIXxl!sNdP00LAv)mjDLg6iu8cAKr**0g(WHZC1718449546941&mode=0011&apiVersion=v1.2.0-beta/
 ```
@@ -122,7 +123,7 @@ https://sandbox.payment.bkash.com/?paymentId=TR0011hEN7KTZ1718449546941&hash=)gq
 
 <br>
 
-Now goto postman and follow the format -
+After creating the payment, now goto postman and follow the format -
 
 ```bash
 POST /tokenized/checkout/execute HTTP/1.1
@@ -230,7 +231,7 @@ Please open your `routes/web.php` file and use the code
 use App\Http\Controllers\PaymentController;
 
 Route::controller(PaymentController::class)->group(function () {
-    Route::post('checkout', 'checkout')->name('checkout');
+    Route::get('checkout', 'checkout')->name('checkout');
     Route::post('payment/process', 'paymentProcees')->name('payment.process');
     Route::post('payment/{payment_method}/pay', 'paymentPayPage')->name('payment.pay.page');
     Route::post('payment/{payment_method}/pay/confirm', 'paymentPayConfirm')->name('payment.pay.confirm');
