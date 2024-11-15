@@ -9,6 +9,8 @@ Click on the headings below to navigate to the corresponding files:
     - [bKash](pages/bkash-integration.md)
     <!-- - [Stripe](pages/stripe-integration.md) -->
 
+1. SQL
+    - [SQL কুয়েরি এক্সিকিউশন এর ধাপ সমূহ :](pages/SQL-কুয়েরি-এক্সিকিউশন-এর-ধাপ-সমূহ.md)
 
 1. [How to use PEST in Laravel](pages/PEST-Laravel.md)
 
