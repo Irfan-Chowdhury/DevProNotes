@@ -20,7 +20,7 @@ FROM Person AS p
 LEFT JOIN Address AS a ON p.personId = a.personId;
 ```
 
-## 2. Duplicate Emails: :
+## 2. Duplicate Emails :
 - Visit : https://leetcode.com/problems/duplicate-emails/
 - Problem Number : 182
 - Difficulty Level : Easy
@@ -32,4 +32,31 @@ SELECT email
 FROM Person
 GROUP BY email
 HAVING COUNT(email) > 1
+```
+
+
+## 3. Customers who never order :
+- Visit : https://leetcode.com/problems/customers-who-never-order/
+- Problem Number : 183
+- Difficulty Level : Easy
+- Topic : LEFT JOIN with IS NULL `OR`  NOT IN with a Subquery:
+
+###  Solution : `LEFT JOIN` with `IS NULL` : (Recommended)
+
+```sql
+SELECT Customers.name AS Customers
+FROM Customers
+LEFT JOIN Orders ON Customers.id = Orders.customerId
+WHERE Orders.customerId IS NULL;
+```
+
+###  Or, Solution : `NOT IN` with a Subquery:
+
+```sql
+SELECT name AS Customers
+FROM Customers
+WHERE id NOT IN (
+    SELECT customerId 
+    FROM Orders
+);
 ```
