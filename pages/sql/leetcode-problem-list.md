@@ -157,3 +157,125 @@ WHERE s.sales_id NOT IN (
     )
 );
 ```
+
+
+## 10. Triangle Judgement :
+- Visit : https://leetcode.com/problems/triangle-judgement
+- Problem Number : 610
+- Difficulty Level : Easy
+- Topic : Advanced Select and Joins 
+
+###  Solution :
+```sql
+SELECT 
+    x, y, z,
+    CASE
+        WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes'
+        ELSE 'No'
+    END AS triangle
+FROM 
+    Triangle;
+```
+
+
+## 11. Biggest Single Number :
+- Visit : https://leetcode.com/problems/biggest-single-number/
+- Problem Number : 619
+- Difficulty Level : Easy
+- Topic : Sorting and Grouping
+
+###  Solution :
+```sql
+SELECT
+    MAX(number) AS num
+FROM 
+(
+    SELECT 
+        IF(COUNT(num) > 1, null, num) AS number
+    FROM 
+        MyNumbers
+    GROUP BY
+        num
+    HAVING 
+        number IS NOT NULL
+) AS subquery
+```
+
+
+## 12. Not Boring Movies:
+- Visit : https://leetcode.com/problems/not-boring-movies/
+- Problem Number : 620
+- Difficulty Level : Easy
+- Topic : Basic Aggregate Functions
+
+###  Solution :
+```sql
+SELECT id, movie, description, rating
+FROM Cinema
+HAVING id % 2 <> 0 AND description != 'boring'
+ORDER BY rating DESC;
+```
+
+
+## 13. Swap Salary :
+- Visit : https://leetcode.com/problems/swap-salary/
+- Problem Number : 627
+- Difficulty Level : Easy
+- Topic : Update
+
+###  Solution :
+```sql
+UPDATE Salary
+SET 
+sex = IF(sex='m', "f", "m");
+```
+
+
+## 14. Product Sales Analysis 1 :
+- Visit : https://leetcode.com/problems/product-sales-analysis-i
+- Problem Number : 1068
+- Difficulty Level : Easy
+- Topic : Basic Joins
+
+###  Solution :
+```sql
+SELECT Product.product_name, Sales.year, Sales.price
+FROM Sales
+INNER JOIN Product ON Product.product_id=Sales.product_id;
+```
+
+## 15. Project Employees 1 :
+- Visit : https://leetcode.com/problems/project-employees-i/
+- Problem Number : 1075
+- Difficulty Level : Easy
+- Topic : Basic Aggregate Functions
+
+###  Solution :
+```sql
+SELECT 
+    p.project_id AS project_id,
+    ROUND(AVG(e.experience_years), 2) AS average_years
+FROM Project AS p
+JOIN Employee AS e ON e.employee_id = p.employee_id
+GROUP BY project_id;
+```
+
+## 16. Sales Analysis III :
+- Visit : https://leetcode.com/problems/sales-analysis-iii
+- Problem Number : 1084
+- Difficulty Level : Easy
+- Topic : 
+
+###  Solution :
+```sql
+SELECT DISTINCT p.product_id, p.product_name
+FROM Product p
+JOIN Sales s ON p.product_id = s.product_id
+WHERE s.sale_date BETWEEN '2019-01-01' AND '2019-03-31'
+AND NOT EXISTS (
+    SELECT 1 
+    FROM Sales s2
+    WHERE s2.product_id = s.product_id
+    AND (s2.sale_date < '2019-01-01' OR s2.sale_date > '2019-03-31')
+);
+```
