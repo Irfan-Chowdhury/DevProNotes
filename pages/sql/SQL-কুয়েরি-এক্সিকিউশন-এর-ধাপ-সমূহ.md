@@ -3,6 +3,9 @@
 # SQL কুয়েরি এক্সিকিউশন এর ধাপ সমূহ :
 </div>
 
+## Option-1 
+
+
 ### Sequence 
 
 `FROM` > `JOIN` > `WHERE`> `GROUP BY` > `HAVING` > `SELECT` > `DISTINCT` > `ORDER BY` > `LIMIT`
@@ -38,3 +41,12 @@
 ## Courtesy By
 
 [Shafiqul Islam Shafiq](https://www.facebook.com/shafiqpabna/)
+
+
+<br>
+<br>
+
+
+## Option-2
+
+![Demo Animation](/assets/sql-query-logical-order.gif)

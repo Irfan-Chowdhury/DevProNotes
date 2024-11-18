@@ -10,7 +10,8 @@ Click on the headings below to navigate to the corresponding files:
     <!-- - [Stripe](pages/stripe-integration.md) -->
 
 1. SQL
-    - [SQL কুয়েরি এক্সিকিউশন এর ধাপ সমূহ :](pages/SQL-কুয়েরি-এক্সিকিউশন-এর-ধাপ-সমূহ.md)
+    - [SQL কুয়েরি এক্সিকিউশন এর ধাপ সমূহ :](pages/sql/SQL-কুয়েরি-এক্সিকিউশন-এর-ধাপ-সমূহ.md)
+    - [LeetCode Problem List :](/pages/sql/leetcode-problem-list.md)
 
 1. [How to use PEST in Laravel](pages/PEST-Laravel.md)
 
