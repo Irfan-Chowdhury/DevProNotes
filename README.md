@@ -26,3 +26,6 @@ Click on the headings below to navigate to the corresponding files:
 1. [Event Listener with Email Notification](pages/Event-Listener-with-Email-Notification.md)
 
 1. [Autoloading and Dependency Management](pages/Composer-Autoloading-and-Dependency-Management.md)
+
+1. [DSA]()
+    - [Binary Search Algorithm (BST)](pages/dsa/BST.md)
