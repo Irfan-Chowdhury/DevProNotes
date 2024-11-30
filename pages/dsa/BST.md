@@ -1,6 +1,6 @@
 <div align='center'>
 
-# Binary Search Algorithm (BST)
+# Binary Search Tree (BST)
 
 </div>
 
