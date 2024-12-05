@@ -29,3 +29,4 @@ Click on the headings below to navigate to the corresponding files:
 
 1. [DSA]()
     - [Binary Search Tree (BST)](pages/dsa/BST.md)
+    - [Binary Search Algorithm](pages/dsa/Binary-Search-Algorithm.md)
