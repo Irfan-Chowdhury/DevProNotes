@@ -3,21 +3,12 @@
 # Docker Related Commands
 </div>
 
-- **Check Docker Version**
-```bash
-docker --version
-```
 
-
-## Docker Commands
-
-
----
-### 1. Docker Basic/Regular Usage
+### 1. Docker Basic/Regular Commands
 
 | **Command**      | **Description**            |
 |------------------|----------------------------|
-| `docker version` | Show Docker version information. |
+| `docker --version` | Show Docker version information. |
 | `docker info`    | Display system-wide information about Docker. |
 | `docker help`    | List all Docker commands or get help for a specific command. |
 | `docker-compose build`                   | Build or rebuild services.               |
