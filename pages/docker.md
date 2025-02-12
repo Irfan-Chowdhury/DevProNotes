@@ -22,7 +22,7 @@
 | `docker ps -a`                   | List All Containers (Including Stopped Ones)                  |
 | `docker rm laravel_app`                   | Remove the Conflicting Container                  |
 | `docker-compose up -d`                   | Restart Docker Compose                  |
-
+| `docker stop $(docker ps -q)`                   | Stop All Running Containers                  |
 ---
 
 ### If the conflicting container is found, stop and remove it:
