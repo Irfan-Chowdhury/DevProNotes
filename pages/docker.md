@@ -237,7 +237,7 @@ volumes:
 
 ```
 
-### Docker file Sample : 
+### `Dockerfile` file Sample : 
 
 ```bash
 FROM php:8.2-apache
@@ -267,3 +267,41 @@ RUN docker-php-ext-install gettext intl pdo_mysql gd
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 ```
+
+### `Makefile` Sample : 
+```bash
+setup:
+	@make build
+	@make up
+	@make composer-update
+build:
+	docker-compose build --no-cache --force-rm
+stop:
+	docker-compose stop
+up:
+	docker-compose up -d
+composer-update:
+	docker exec docker-php-task bash -c "composer update"
+data:
+	docker exec docker-php-task bash -c "php artisan migrate"
+	docker exec docker-php-task bash -c "php artisan db:seed"
+```
+
+
+## When I start docker for a new project :
+- Create folder 
+- create files for `docker-compose.yml`, `Dockerfile` and `Makefile`. Then put the data where I already mentioned.
+- Run : `docker-compose build` for build or rebuild services.
+- Run : `docker-compose up` for creating and start containers.
+- To Check Container Run: `docker ps`
+- Enter Container : `docker exec -it cartproshop_v3 bash`
+- Exit from container when you need : exit
+- To Access Database : http://localhost:9003/
+- If you face any port related issues
+    - Stop existing Apache Serve
+    - run : docker exec cartproshop_v3 bash -c "php artisan serve --host=0.0.0.0 --port=8003"
+
+
+## Reference :
+- Initial Setup : https://www.youtube.com/watch?v=_iLwTmaUU-g&t=719s
+- Professional Setup (Laravel) : https://www.youtube.com/watch?v=V-MDfE1I6u0
