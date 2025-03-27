@@ -32,3 +32,5 @@ Click on the headings below to navigate to the corresponding files:
     - [Binary Search Algorithm](pages/dsa/Binary-Search-Algorithm.md)
 
 1. [Docker Commands](pages/docker.md)
+1. Git
+    - [How to work with Team Projects in GitHub and and collaborate with team]([pages/bkash-integration.md](https://www.youtube.com/watch?v=zCtL4E7MGbA))
