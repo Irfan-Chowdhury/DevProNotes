@@ -15,7 +15,9 @@ Click on the headings below to navigate to the corresponding files:
 
 1. [How to use PEST in Laravel](pages/PEST-Laravel.md)
 
-1. [How to use TypeScript in Laravel](pages/TypeScriptWithLaravel.md)
+1. How to use TypeScript 
+    - [In General](pages/typescript/general.md)
+    - [In Laravel](pages/typescript/TypeScriptWithLaravel.md)
 
 1. [Linux Daily Command](pages/LinuxDailyCommand.md)
 
