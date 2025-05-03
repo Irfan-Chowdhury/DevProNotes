@@ -18,6 +18,7 @@ Click on the headings below to navigate to the corresponding files:
 1. How to use TypeScript 
     - [In General](pages/typescript/general.md)
     - [In Laravel](pages/typescript/TypeScriptWithLaravel.md)
+    - [Tutorial](pages/typescript/tutorial.md)
 
 1. [Linux Daily Command](pages/LinuxDailyCommand.md)
 
