@@ -1,10 +1,11 @@
 <div align='center'>
 
-# <span style="color: red;">TypeScript Tutorial</span>
+# <h1 style="color: red;">TypeScript Tutorial</h1>
 </div>
 
 
-## <span style="color: blue;">1.4 : Basic Data Types </span>
+## <h3 style="color: blue;">1.4 : Basic Data Types </h3>
+<hr>
  
 **Primitive & Non-Primitive Types**
 
