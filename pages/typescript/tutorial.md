@@ -1,9 +1,10 @@
 <div align='center'>
 
-# Tutorial 
+# <span style="color: red;">TypeScript Tutorial</span>
 </div>
 
-## 1.4 Basic Data Types
+
+## <span style="color: blue;">1.4 : Basic Data Types </span>
  
 **Primitive & Non-Primitive Types**
 
@@ -73,7 +74,7 @@ let student : { name: string, rollNo: number, isStudent: boolean } = {
 ```
 
 
-## 1-5 Object, Optional and Literal Types
+## <span style="color: blue;">1-5 : Object, Optional and Literal Types</span>
 
 ```ts
 // Reference Type --> Object 
@@ -93,9 +94,8 @@ const user: {
 };
 ```
 
+## <span style="color: blue;">1-6 : Function in typescript</span>
 
-
-## 1-6 Function in typescript
 
 **Normal Function**
 
@@ -133,7 +133,7 @@ const arr:number[] = [1, 2, 3, 4, 5];
 const newArray:number[] = arr.map((elem:number): number => elem * elem);
 ```
 
-## 1-7 Spread and Rest Operator
+## <span style="color: blue;">1-7 : Spread and Rest Operator</span>
 
 **Spread Operator :**
 
@@ -183,7 +183,8 @@ badFriends('John', 'Jane', 'Jack', 'Abul', 'kabul'); // Hi John and Jane, and al
 ```
 
 
-## 1-8 Destructuring
+## <span style="color: blue;">1-8 : Destructuring</span>
+
 
 **code** 
 
@@ -220,4 +221,138 @@ const [, , bestFriendB, ...rest] = myFriends;
 console.log(a); // Irfan
 console.log(b); // Shakib
 console.log(bestFriendB); // Sabbir
+```
+
+
+## <span style="color: blue;">1-9 : Type alias in typescript</span>
+
+**Old Way**
+
+***Example : 1***
+
+```ts
+    const student1 : {
+        name:string,
+        age:number,
+        gender:string,
+        contactNo:string,
+        address:string,
+    } = {
+        name: "Irfan",
+        age:50,
+        gender:'male',
+        contactNo: "01700000000",
+        address: 'Dhaka Bangladesh'    
+    }
+
+    const student2 : {
+        name:string,
+        age:number,
+        gender:string,
+        address:string,
+    } = {
+        name: "Fahim",
+        age:80,
+        gender:'female',
+        address: 'Chittagong Bangladesh'    
+    }
+```
+
+**New Way**
+
+***Example : 2***
+
+```ts
+    type Student = {
+        name:string;
+        age:number;
+        contactNo?:string;
+        gender:string;
+        address:string;
+    }
+
+    const student3 : Student = {
+        name: "Irfan",
+        age:50,
+        gender:"male",
+        contactNo: "01700000000",
+        address: 'Dhaka Bangladesh'
+    }
+```
+
+***Example-3***
+```ts
+    type UserName = string;
+    type IsAdmin = boolean;
+    const UserName : UserName = "Irfan";
+    const isAdmin : IsAdmin = true;
+    console.log(UserName); // Irfan
+    console.log(isAdmin); // true
+```
+
+**Function Alias**
+
+***Example-4***
+
+```ts
+    type Add = (num1: number, num2:number) => number;
+    const add: Add = (num1, num2) => num1 + num2;
+
+    const result = add(10, 20);
+    console.log(result); // 30
+```
+
+
+## <span style="color: blue;">1-10 : Union and Intersection types</span>
+
+
+**Union types (OR), Symbol '|'**
+
+***Example-1 :*** 
+```ts
+    type FrontendDeveloper = "fakibazDeveloper" | "juniorDeveloper";
+    type FullstackDeveloper = "frontendDeveloper" | "expertDeveloper";
+
+    type Developer = FrontendDeveloper | FullstackDeveloper;
+
+    const newDeveloper : FrontendDeveloper = "juniorDeveloper";
+```
+
+***Example-2 :*** 
+```ts
+    type User = {
+        name: string;
+        email?: string;
+        gender: "male" | "female";
+        bloodGroup: "A+" | "B" | "AB+" | "O";
+    }
+
+    const user1: User = {
+        name: "Fakibaz",
+        gender:'male',
+        bloodGroup: "A+"
+    }
+```
+
+**Intersection types (AND), Symbol '&'**
+
+***Example-3 :***
+```ts
+    type FrontendDeveloper = {
+        skills: string[];
+        designation1: "Frontend Developer";
+    }
+
+    type BackendDeveloper = {
+        skills: string[];
+        designation2: "Backend Developer";
+    }
+
+    type FullstackDeveloper = FrontendDeveloper & BackendDeveloper;
+
+    const fullstackDeveloper : FullstackDeveloper = {
+        skills: ["HTML", "CSS", "JavaScript", "Node.js"],
+        designation1: "Frontend Developer",
+        designation2: "Backend Developer",
+    }
 ```
