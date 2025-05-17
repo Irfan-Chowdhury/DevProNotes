@@ -38,3 +38,6 @@ Click on the headings below to navigate to the corresponding files:
 1. Git
     - [Git-Commands](pages/git/git-commands.md)
     - [How to work with Team Projects in GitHub and and collaborate with team]([pages/bkash-integration.md](https://www.youtube.com/watch?v=zCtL4E7MGbA))
+
+1. [PostgreSQL](pages/postgresql.md)
+
