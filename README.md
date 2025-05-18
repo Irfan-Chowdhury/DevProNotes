@@ -41,3 +41,5 @@ Click on the headings below to navigate to the corresponding files:
 
 1. [PostgreSQL](pages/postgresql.md)
 
+1. [Behind the Code: Challenges I Faced as a Developer](pages/challenges-I-faced.md)
+
