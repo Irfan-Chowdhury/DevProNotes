@@ -201,3 +201,119 @@ exit
 ```bash
 psql -U postgres -W
 ```
+
+<br>
+
+## 9.1 Handling Date and Date Functions in PostgreSQL
+
+### 🕐 সময় ও টাইমজোন দেখানো
+
+```sql
+SHOW TIMEZONE;
+```
+
+👉 সার্ভারে সেট করা ডিফল্ট টাইমজোন দেখায়।
+
+```sql
+SELECT now();
+```
+👉 বর্তমান তারিখ ও সময় (timestamp with time zone) রিটার্ন করে।
+
+### 🧾 একটি কাস্টম টেবিল (ধরা যাক timeZ) থেকে সব ডেটা দেখানো
+
+```sql
+SELECT * FROM timeZ;
+```
+👉 timeZ টেবিলের সব রেকর্ড দেখায়।
+
+### 📅 আজকের তারিখ ও সময় সম্পর্কিত কুয়েরি
+
+```sql
+SELECT CURRENT_DATE;
+```
+
+👉 শুধু আজকের তারিখ দেখায় (সময় ছাড়া)।
+```sql
+SELECT now()::date;
+```
+
+👉 now() থেকে কেবল তারিখ অংশ বের করে।
+```sql
+SELECT now()::time;
+```
+👉 now() থেকে কেবল সময় অংশ বের করে।
+
+### 🧮 তারিখ কাস্টম ফরম্যাটে
+
+```sql
+SELECT to_char(now(), 'YYYY-MM-DD');
+```
+
+👉 আজকের তারিখ YYYY-MM-DD ফরম্যাটে স্ট্রিং আকারে রিটার্ন করে (যেমন 2025-05-17)।
+```sql
+SELECT to_char(now(), 'DDD');
+```
+👉 বছরে আজকের দিনটি কততম দিন তা দেখায় (যেমন 137তম দিন)।
+
+
+### 📉 তারিখের মাঝে ব্যবধান (interval)
+```sql
+SELECT CURRENT_DATE - INTERVAL '1 year 2 month';
+```
+
+👉 আজকের তারিখ থেকে ১ বছর ২ মাস বাদ দিয়ে রেজাল্ট দেয়।
+
+### 📊 বয়স হিসাব
+
+```sql
+SELECT age(CURRENT_DATE, '1995-08-26');
+```
+👉 আজকের তারিখ থেকে '1995-08-26' তারিখ পর্যন্ত কত বয়স হয়েছে তা দেখায় (বছর, মাস, দিন আকারে)।
+
+```sql
+SELECT *, age(CURRENT_DATE, dob) AS student_age FROM students;
+```
+👉 students টেবিলের প্রতিটি ছাত্রের জন্মতারিখ (dob) থেকে বর্তমান বয়স বের করে student_age নামে দেখায়।
+
+### 📆 মাস বের করা
+
+```sql
+SELECT extract(month from '2025-05-25'::date);
+```
+👉 '2025-05-25' তারিখ থেকে মাস (May → 5) বের করে।
+
+<br>
+
+## 9-5 Enforcing Referential Integrity: Behaviors During Data Deletion
+
+
+### Deletion constraint on DELETE user :
+
+- <b>Cascading Deletion --> ON DELETE CASCADE</b>
+
+    ```sql
+    user_id INTERGER REFERENCES "user"(id) ON DELETE CASCADE
+    ```
+
+- <b>Setting NULL --> ON DELETE SET NULL</b>
+    ```sql
+    user_id INTERGER REFERENCES "user"(id) ON DELETE set null
+    ```
+- <b>Restrict Deletion --> ON DELETE RESTRICT / ON DELETE NO ACTION (default)</b>
+    ```sql
+    user_id INTERGER REFERENCES "user"(id) ON DELETE set DEFAULT 2
+    ```
+
+-  <b>Set Default value --> ON DELETE SET DEFAULT</b>
+
+    ```sql
+    user_id INTERGER REFERENCES "user"(id)
+    ```
+
+<br>
+
+### SQL Join Practice Task :
+
+Visit : https://like-frog-b41.notion.site/SQL-Join-Practice-Task-27ac979408f5477da80de4ab299f9225
+
+Repository Files : https://github.com/Apollo-Level2-Web-Dev/dbms-postgres

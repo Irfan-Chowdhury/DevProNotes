@@ -43,3 +43,5 @@ Click on the headings below to navigate to the corresponding files:
 
 1. [Behind the Code: Challenges I Faced as a Developer](pages/challenges-I-faced.md)
 
+1. [My Reusable Code Snippets for Efficient Development](pages/reusable-code-snippets.md)
+
