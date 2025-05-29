@@ -127,7 +127,7 @@ class MessageNotification extends Notification implements ShouldQueue
 
 <br>
 
- # ✅ 3. Queue setup by `Cron Jobs` in cPanel
+ ### 3. Queue setup by `Cron Jobs` in cPanel
  
  Goto cPanel and search `Cron Jobs` and then goto that page.
 
@@ -144,12 +144,15 @@ ii. Then goto the **Command** input field and paste it and save-
 
  Now run your project and check your mail.
 
+<br>
+
+<img src="https://snipboard.io/36cvO7.jpg" width="600"/>
 
 
 <br>
 
 
-# ✅ 4. Setup cPanel Email  in Laravel and Forward to Gmail.
+# ✅ 3. Setup cPanel Email  in Laravel and Forward to Gmail.
 
 ### Problem Statement : 
 `Connection could not be established with host "smtp.gmail.com:587": stream_socket_client(): Unable to connect to smtp.gmail.com:587 (Network is unreachable)
