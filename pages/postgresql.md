@@ -312,8 +312,59 @@ SELECT extract(month from '2025-05-25'::date);
 
 <br>
 
-### SQL Join Practice Task :
+## SQL Join Practice Task :
 
 Visit : https://like-frog-b41.notion.site/SQL-Join-Practice-Task-27ac979408f5477da80de4ab299f9225
 
 Repository Files : https://github.com/Apollo-Level2-Web-Dev/dbms-postgres
+
+### Solution :
+
+```sql
+-- 1. Inner Join to Retrieve Employee and Department Information
+SELECT * FROM employees
+INNER JOIN departments ON employees.department_id = departments.id;
+
+-- 2. Group By Department with Average Salary
+SELECT departments.department_name, ROUND(AVG(employees.salary)) AS average_salary
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.id
+GROUP BY departments.department_name;
+
+-- 3. Count Employees in Each Department
+SELECT departments.department_name, COUNT(employees.id) AS employee_count
+FROM employees
+JOIN departments ON departments.id = employees.department_id
+GROUP BY departments.department_name;
+
+
+-- 4.Find the Department name with the Highest Average Salary
+SELECT departments.department_name, ROUND(AVG(employees.salary)) AS Highest_AVG_Salary
+FROM employees
+JOIN departments ON departments.id = employees.department_id
+GROUP BY departments.department_name
+ORDER BY Highest_AVG_Salary DESC
+LIMIT 1;
+
+
+-- 5. Count Employees Hired Each Year
+SELECT EXTRACT(YEAR FROM hire_date) AS hire_year, count(employee_name) AS total_hired
+FROM employees
+GROUP BY hire_year
+ORDER BY hire_year DESC;
+
+
+-- 6. Find customers who have placed more than 2 orders and calculate the total amount spent by each of these customers.
+SELECT customer_id, SUM(total_amount) AS total_spent
+FROM orders
+GROUP BY customer_id
+HAVING COUNT(customer_id) > 2
+ORDER BY total_spent DESC;
+
+--  7: Find the total amount of orders placed each month in the year 2022.
+SELECT SUM(total_amount) AS totalAmount, EXTRACT(MONTH FROM order_date) AS order_month
+FROM orders
+WHERE EXTRACT(YEAR FROM order_date) = 2022
+GROUP BY order_month
+ORDER BY order_month;
+```

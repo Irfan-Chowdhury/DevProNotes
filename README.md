@@ -35,6 +35,7 @@ Click on the headings below to navigate to the corresponding files:
     - [Binary Search Algorithm](pages/dsa/Binary-Search-Algorithm.md)
 
 1. [Docker Commands](pages/docker.md)
+
 1. Git
     - [Git-Commands](pages/git/git-commands.md)
     - [How to work with Team Projects in GitHub and and collaborate with team]([pages/bkash-integration.md](https://www.youtube.com/watch?v=zCtL4E7MGbA))
@@ -44,4 +45,6 @@ Click on the headings below to navigate to the corresponding files:
 1. [Behind the Code: Challenges I Faced as a Developer](pages/challenges-I-faced.md)
 
 1. [My Reusable Code Snippets for Efficient Development](pages/reusable-code-snippets.md)
+
+1. [Interview Preparation](pages/interview-preparation/preparation.md)
 
