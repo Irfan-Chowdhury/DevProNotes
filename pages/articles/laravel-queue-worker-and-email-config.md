@@ -1,66 +1,27 @@
 <div align='center'>
 
-# Table of Contents
+# 🔧 Set Up Laravel Queue Worker and Email Configuration Using Cron Job on cPanel (With Gmail Forwarding)
 </div>
 
 
-
-- [1. Storage link not working on hosting cPanel](#1-storage-link-not-working-on-hosting-cpanel)
-- [2. Set Up Laravel Queue Worker Using Cron Job in cPanel](#-2-set-up-laravel-queue-worker-using-cron-job-in-cpanel)
-- [3. Setup cPanel Email  in Laravel and Forward to Gmail.](#-4-setup-cpanel-email--in-laravel-and-forward-to-gmail)
-
-
-<br>
-
-# ✅ 1. Storage link not working on hosting cPanel
-
-### Problem Statement : 
-I've created a storage link with php artisan storage:link and it's working totally fine on localhost, However, when I deploy my project on a shared hosting cPanel, it does not render any images. 
-
-Solutions : 
-- Delete the storage link folder created on your local host from your c-panel
--  Create a route to run you php artisan storage:link command as below :
-
-    ```php
-    use Illuminate\Support\Facades\Artisan;
-
-    Route::get('/storage_link', function (){ 
-        Artisan::call('storage:link'); 
-        return 'Success !';
-    });
-    ```
-- On your bowser got to the route /storage_link,.. this will create a new system link to you storage file.
-
-- Your `APP_URL` on `.env` file should be 
-
-    ```bash
-    APP_URL=your_site_url
-    ```
-- Check the `config/filesystems.php`
-
-    ```php
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-        ],
-    ```
-
-- Recommended to fetch the image like this - 
-    ```php
-    isset($path) && (Storage::disk('public')->exists($path)) ? Storage::url($path) : "https://dummyimage.com/50x50/000000/0f6954.png&text=$default";
-    ```
-
-<br>
-
-# ✅ 2. Set Up Laravel Queue Worker Using Cron Job in cPanel
-
-### Problem Statement : 
-আমি মেইল পাঠাতে Mail::to($email)->send() ব্যবহার করছি, কিন্তু এতে ইউজারকে অতিরিক্ত লোড টাইম নিতে হচ্ছে। বিষয়টা সলভ করতে চাই queue() দিয়ে, যেটা লোকালহোস্টে ঠিকভাবে কাজ করে।
+## 💡 Common Issue Faced in Shared Hosting Environments 
+<!-- আমি মেইল পাঠাতে Mail::to($email)->send() ব্যবহার করছি, কিন্তু এতে ইউজারকে অতিরিক্ত লোড টাইম নিতে হচ্ছে। বিষয়টা সলভ করতে চাই queue() দিয়ে, যেটা লোকালহোস্টে ঠিকভাবে কাজ করে।
 শেয়ার হোস্টিং-এ কিভাবে Laravel Mail Queue সিস্টেম ইমপ্লিমেন্ট করবো, যেখানে  queue:work চালানোর সরাসরি অপশন থাকে না?
 ইউজার যেন ফর্ম সাবমিট করার সাথে সাথে ফাস্ট রেসপন্স পায়, আর মেইলটা ব্যাকগ্রাউন্ডে পাঠানো হয়। এটা সহজে কিভাবে হেন্ডেল করতে পারি ?
 
+পাশাপাশি  দেখা যায়, Gmail এর ক্রেডেনশিয়াল ইনফু দিয়ে সেটআপ করলে সেগুলা লোকাল মেশিনে কাজ করে কিন্তু Shared Hosting (cPanel) এ কাজ করেনা, error দেখায় । এক্ষেত্রে Shared Hosting কিভাবে মেইলে কনফিগার করা যায় ।  -->
+
+As Laravel developers, we often need to send emails using `Mail::to($email)->send()` or other mechanisms. However, this can significantly slow down the user experience, as the email is sent during the HTTP request. A better approach is to use `queue()` to send emails in the background, allowing users to receive a fast response after form submission.
+
+This setup often works fine in local environments, but implementing **Laravel Mail Queue** on shared hosting (like cPanel) can be challenging due to the lack of direct access to run `php artisan queue:work` continuously.
+
+Additionally, when using Gmail SMTP credentials (e.g., `smtp.gmail.com`, port `587`, encryption `tls`), everything might work perfectly on localhost, but fail on shared hosting with a network or connection error. This is a **common limitation** with shared hosting providers, where external SMTP services like Gmail are often **blocked or restricted**.
+
+---
+
+
+
+## ✅ 1. Set Up Laravel Queue Worker Using Cron Job in cPanel
 
 ### Step-by-Step:
 ---
@@ -151,16 +112,17 @@ ii. Then goto the **Command** input field and paste it and save-
 <br>
 
 
-# ✅ 3. Setup cPanel Email  in Laravel and Forward to Gmail.
+## ✅ 2. Setup cPanel Email  in Laravel and Forward to Gmail.
 
-### Problem Statement : 
+When we try to setup our gmail credentials info in shared hosting like cPanel, this type of issue will be created. 
+
 `Connection could not be established with host "smtp.gmail.com:587": stream_socket_client(): Unable to connect to smtp.gmail.com:587 (Network is unreachable)
 `
 
 This error means that your cPanel server is unable to connect to Gmail's SMTP server (smtp.gmail.com:587). The same setup works on your local machine because your local network allows outbound SMTP traffic, but your shared hosting (cPanel) likely blocks it.
 
----
-This guide shows how to configure your Laravel project to send emails using your **cPanel email**, and **forward those emails to your Gmail inbox**.
+
+So that's why this guide shows how to configure your Laravel project to send emails using your **cPanel email**, and **forward those emails to your Gmail inbox**.
 
 ---
 
@@ -275,5 +237,14 @@ Now, every email sent to `noreply@yourdomain.com` will also be forwarded to your
 ### ✅ Done!
 
 Your Laravel project now uses your cPanel email to send messages, and all emails will be forwarded to your Gmail inbox.
+
+---
+
+### ✅ What You’ll Learn in This Guide
+
+* How to queue emails in Laravel and process them in shared hosting using `Cron Job`
+* How to avoid user-facing delays by using queued notifications
+* How to configure and send email using cPanel's built-in mail service
+* How to **forward emails from your cPanel email to Gmail**
 
 ---

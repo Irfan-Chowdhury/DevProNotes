@@ -48,3 +48,7 @@ Click on the headings below to navigate to the corresponding files:
 
 1. [Interview Preparation](pages/interview-preparation/preparation.md)
 
+1. Articles Published 
+    - [Set Up Laravel Queue Worker and Email Configuration Using Cron Job on cPanel (With Gmail Forwarding)](pages/articles/laravel-queue-worker-and-email-config.md)
+
+
