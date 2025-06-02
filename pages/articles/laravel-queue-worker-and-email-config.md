@@ -151,7 +151,7 @@ So that's why this guide shows how to configure your Laravel project to send ema
 
 <br>
 
-<img src="https://snipboard.io/ioldCL.jpg" width="600"/>
+<img src="https://snipboard.io/dDbfMc.jpg" width="600"/>
 
 <br>
 
@@ -159,7 +159,7 @@ So that's why this guide shows how to configure your Laravel project to send ema
 
 <br>
 
-<img src="https://snipboard.io/owsCqv.jpg" width="600"/>
+<img src="https://snipboard.io/5E1a6W.jpg" width="600"/>
 
 <br>
 
@@ -221,7 +221,7 @@ Now, every email sent to `noreply@yourdomain.com` will also be forwarded to your
 
 <br>
 
-<img src="https://snipboard.io/xWiKNR.jpg" width="600"/>
+<img src="https://snipboard.io/HG8qce.jpg" width="600"/>
 
 <br>
 
@@ -229,8 +229,7 @@ Now, every email sent to `noreply@yourdomain.com` will also be forwarded to your
 
 <br>
 
-<img src="https://snipboard.io/YUXl8B.jpg" width="600"/>
-
+<img src="https://snipboard.io/GtPUaf.jpg" width="600"/>
 
 ---
 
