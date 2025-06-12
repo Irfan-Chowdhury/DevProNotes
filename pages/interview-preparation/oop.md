@@ -5,17 +5,17 @@
 
 ## 📚 Table of Contents
 
-- [1. Difference between Abstraction and Encapsulation (BrainStation)](#1-difference-between-abstraction-and-encapsulation--explain-with-examples-brainstation)
+- [1. Difference between Abstraction and Encapsulation (BrainStation)](#1-difference-between-abstraction-and-encapsulation--explain-with-examples-brainstation)  [BrainStation]
 
-- [2. Difference between Overriding and Overloading (BS23)](#2-difference-between-overriding-and-overloading-bs23)
+- [2. Difference between Overriding and Overloading](#2-difference-between-overriding-and-overloading) [BrainStation]
 
-- [3. Final keyword in OOP (BrainStation | Prime Tech)](#3-final-keyword-in-oop--brainstation---prime-tech)
+- [3. Final keyword in OOP](#3-final-keyword-in-oop--brainstation---prime-tech) [BrainStation | Prime Tech]
 
-- [4. Difference between Interface and Abstract Class (BrainStation | CBG)](#4-difference-between-interface-and-abstract-class--brainstation--cbg)
+- [4. Difference between Interface and Abstract Class](#4-difference-between-interface-and-abstract-class--brainstation--cbg) [BrainStation | CBG]
 
-- [5. Why is Interface important/main benifit? (Prime Tech)](#5-why-is-interface-importantmain-benifit--prime-tech)
+- [5. Why is Interface important/main benifit?](#5-why-is-interface-importantmain-benifit--prime-tech) [Prime Tech]
 
-- [6. Can we create an object of abstract class? (Prime Tech)](#6-can-we-create-an-object-of-abstract-class--prime-tech)
+- [6. Can we create an object of abstract class?](#6-can-we-create-an-object-of-abstract-class--prime-tech) [Prime Tech]
 
 
 <br>
@@ -83,7 +83,7 @@ class BankAccount {
 
 <br>
 
-## 2. Difference between Overriding and Overloading. (BS23)
+## 2. Difference between Overriding and Overloading
 
 
 ### 🔹 **Overloading (ওভারলোডিং)**
