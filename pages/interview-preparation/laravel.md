@@ -6,7 +6,7 @@
 ## 📚 Table of Contents
 
 
-1. [What is the difference between get(), first(), find(), and pluck() in Eloquent?](#q--what-is-the-difference-between-get-first-find-and-pluck-in-eloquent)
+1. [What is the difference between get(), first(), find(), and pluck() in Eloquent ?](#q--what-is-the-difference-between-get-first-find-and-pluck-in-eloquent-)
 
 1. [Difference between var_dump(), print_r(), and dd()](#q--difference-between-var_dump-print_r-and-dd)
 
@@ -343,7 +343,7 @@ $users = User::with(['profile', 'orders'])->get();
 
 <br>
 
-# Q : In Laravel, the full system which is supported by default ? Eager or Lazy which ?
+# Q : In Laravel, the full system which is supported by default ? Eager or Lazy which?
 
 Laravel-এ ডিফল্টভাবে **Lazy Loading** সাপোর্ট করে। অর্থাৎ, আপনি যখন কোনো মডেল লোড করেন এবং সম্পর্কিত (related) ডেটা অ্যাক্সেস করেন, Laravel তখন **প্রয়োজন হওয়ার পর** সেই রিলেটেড ডেটা ডাটাবেজ থেকে এনে দেয়।
 
