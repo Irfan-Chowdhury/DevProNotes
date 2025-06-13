@@ -17,7 +17,7 @@
 
 1. [The `first()` and `get()` which initialize the class?](#q--the-first-and-get-which-initialize-the-class) `[BS23]`
 
-1. [What is Collection ?](#q--what-is-collection) `[BS23]`
+1. [What is Collection ?](#q--what-is-collection-) `[BS23]`
 
 1. [In the Laravel application, what is the importance of the `bootstrap/app.php` file?](#q--in-the-laravel-application-what-is-the-importance-of-the-bootstrapappphp-file) `[BS23]`
 
