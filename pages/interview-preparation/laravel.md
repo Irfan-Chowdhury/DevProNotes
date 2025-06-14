@@ -3,8 +3,6 @@
 # Laravel
 </div>
 
-## 📚 Table of Contents
-
 
 1. [What is the difference between get(), first(), find(), and pluck() in Eloquent ?](#q--what-is-the-difference-between-get-first-find-and-pluck-in-eloquent-)
 
@@ -37,13 +35,14 @@
 
 1. [What is Eloquent ORM?](#q--what-is-eloquent-orm)  `[Prime Tech]`
 
+1. [Explain about `hasMany`, `hasThrough` and `polymorphic` relationship](#q--explain-about-hasmany-hasthrough-and-polymorphic-relationship) `[CBG]`
+
 1. [What is MVC?](#q--what-is-mvc)  `[Arraytics]`
 
 1. [What is the main merits and demerits of Dependency Injection?](#q--what-is-the-main-merits-and-demerits-of-dependency-injection) `[Prime Tech]`
 
 1. [Is ORM first or Data abstraction layer first?](#q--is-orm-first-or-data-abstraction-layer-first) `[Prime Tech]`
 
-1. [Explain about `hasMany`, `hasThrough` and `polymorphic` relationship](#q--explain-about-hasmany-hasthrough-and-polymorphic-relationship) `[CBG]`
 
 1. [What is Route Model Binding?](#q--what-is-route-model-binding)
 
@@ -54,6 +53,25 @@
 1. [If I send 1000 mails or any operation using a chunk, then if any operation fails, then will the next operation continue or not?](#q--if-i-send-1000-mails-or-any-operation-using-a-chunk-then-if-any-operation-fails--then-will-the-next-operation-continue-or-not)  `[Next Ventures]`
 
 1. [What is Laravel Throttle?](#q--what-is-laravel-throttle) `[Next Ventures]`
+
+
+1. [What is the purpose of using `.env` in a Laravel project?](#q--what-is-the-purpose-of-using-env-in-a-laravel-project)
+
+1. [What is a polymorphic relationship in Eloquent? Can you give an example of its implementation?](#q--what-is-a-polymorphic-relationship-in-eloquent-can-you-give-an-example-of-its-implementation)
+
+1. [How would you create and use a query scope in Laravel?](#q--how-would-you-create-and-use-a-query-scope-in-laravel)
+
+1. [What is the difference between `queue` and `event` in Laravel? Can you provide a use case for each?](#q--what-is-the-difference-between-queue-and-event-in-laravel-can-you-provide-a-use-case-for-each)
+
+1. [What is CSRF protection, and how does Laravel implement it?](#q--what-is-csrf-protection-and-how-does-laravel-implement-it)
+
+1. [What are some strategies for optimizing a Laravel application’s performance?](#q--what-are-some-strategies-for-optimizing-a-laravel-applications-performance)
+
+1. [How do you optimize large database queries in Laravel?](#q--how-do-you-optimize-large-database-queries-in-laravel)
+
+1. [What is the difference between `bind()` and `singleton()` in the service container?](#q--what-is-the-difference-between-bind-and-singleton-in-the-service-container)
+
+1. [Explain how Laravel's middleware pipeline works. How would you create and chain multiple middlewares?](#q--explain-how-laravels-middleware-pipeline-works-how-would-you-create-and-chain-multiple-middlewares)
 
 
 <br>
@@ -139,7 +157,8 @@ $users = User::pluck('name', 'id');
 ---
 
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 
 # Q : Difference between `var_dump()`, `print_r()`, and `dd()`
@@ -248,7 +267,8 @@ dump($data); // চলবে, কিন্তু কোড execution চলব�
 ```
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : Explain about the `Lazy Loading` and `Eager Loading` 
 
@@ -341,7 +361,8 @@ $users = User::with(['profile', 'orders'])->get();
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : In Laravel, the full system which is supported by default ? Eager or Lazy which?
 
@@ -397,7 +418,8 @@ Model::preventLazyLoading();
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : The `first()` and `get()` which initialize the class?
 
@@ -469,7 +491,8 @@ Laravel-এ `->first()` এবং `->get()` **দুটোই মডেল ই�
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : In the Laravel application, what is the importance of the `bootstrap/app.php` file ?
 
@@ -564,7 +587,8 @@ public/index.php → bootstrap/app.php → App\Http\Kernel → Routes → Contro
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is `Service Container` ?
 
@@ -663,7 +687,8 @@ Laravel এর `Route`, `Controller`, `Job`, `Event`, `Command` — সব ক�
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Service Provider ?
 
@@ -743,7 +768,8 @@ public function register()
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : Explain Laravel Request Lifecycle
 
@@ -948,7 +974,8 @@ php artisan start-session     // Session ব্যবহার হলে শু�
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Dependency Injection ?
 
@@ -1051,7 +1078,8 @@ App::bind('PaymentService', function($app) {
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : Explain Dependency Injection vs Service Container
 
@@ -1234,7 +1262,8 @@ Use BkashPayment                   Auto Instantiate
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : If two classes A, B. B have data/methods. How can set it dependency injection, concept of service container ?
 
@@ -1355,7 +1384,8 @@ public function register()
 ```
 
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Eloquent ORM ?
 
@@ -1430,7 +1460,8 @@ $user->save(); // INSERT INTO users ...
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is MVC  ?
 
@@ -1601,7 +1632,8 @@ routes/
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is the main merits and demerits of Dependency Injection ?
 
@@ -1664,8 +1696,8 @@ class A {
 }
 ```
 
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
 
-<br>
 
 # Q : Is ORM first or Data abstraction layer first ?
 
@@ -1728,7 +1760,8 @@ DAL হলো ভিত্তি (foundation), ORM হলো তার উপর
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : Explain about `hasMany`, `hasThrough` and `polymorphic` relationship.
 
@@ -1736,7 +1769,27 @@ Laravel-এ Eloquent Relationship এর মধ্যে **hasMany**, **hasManyT
 
 ---
 
-## 🔸 1. `hasMany` Relationship
+### ✅ 1. `hasOne` 
+
+একটি মডেল অন্য একটি মডেলের **একটি মাত্র instance** এর সাথে সম্পর্কিত।
+
+#### উদাহরণ:
+
+একজন **User** এর একটি **Phone** থাকতে পারে।
+
+```php
+// User.php
+public function phone()
+{
+    return $this->hasOne(Phone::class);
+}
+```
+
+👉 অর্থ: `users` টেবিলের একটি row এর সাথে `phones` টেবিলের একটি row সম্পর্কিত।
+
+---
+
+## ✅ 2. `hasMany` Relationship
 
 ### 🧠 ব্যাখ্যা:
 
@@ -1772,18 +1825,14 @@ $posts = $user->posts; // ঐ ইউজারের সব পোস্ট
 
 ---
 
-## 🔸 2. `hasManyThrough` Relationship
+## ✅ 3. `hasManyThrough` Relationship
 
 ### 🧠 ব্যাখ্যা:
 
 একটি মডেল অনেকগুলো রিলেটেড মডেলের সাথে যুক্ত, কিন্তু মাঝখানে আরেকটি মডেল রয়েছে।
 
-
-
-
 > `hasManyThrough` হলো এমন একটি রিলেশন যেখানে একটি মডেল অন্য একটি মডেলের সাথে **পরোক্ষভাবে** যুক্ত থাকে একটি মধ্যবর্তী (intermediate) মডেলের মাধ্যমে।
 
----
 
 ### 🧾 উদাহরণ Scenario:
 
@@ -1869,7 +1918,55 @@ WHERE users.country_id = 1
 
 ---
 
-## 🔸 3. Polymorphic Relationship
+
+
+
+### ✅ 4. `belongsTo` (কারো মালিকানা)
+
+এই মডেলটি অন্য একটি মডেলের **মালিকানা বোঝায়**। অর্থাৎ current model টি অন্য model কে **belong করে**।
+
+#### উদাহরণ:
+
+প্রতিটি **Post** এর একজন **User** থাকে।
+
+```php
+// Post.php
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+```
+👉 অর্থ: `posts` টেবিলের প্রতি row, `users` টেবিলের একটি row কে belong করে।
+
+---
+
+### ✅ 5. `belongsToMany` (মাঝে pivot table)
+
+একটি মডেল এবং আরেকটি মডেল একে অপরের সাথে **many-to-many** সম্পর্কযুক্ত। মাঝে একটি **pivot table** থাকে।
+
+#### উদাহরণ:
+
+একজন **User** অনেক **Role** পেতে পারে, আবার একটি **Role** অনেক **User** পেতে পারে।
+
+```php
+// User.php
+public function roles()
+{
+    return $this->belongsToMany(Role::class);
+}
+
+// Role.php
+public function users()
+{
+    return $this->belongsToMany(User::class);
+}
+```
+
+👉 এর জন্য `role_user` নামের একটি pivot table থাকতে হয়।
+
+---
+
+## ✅ 6. Polymorphic Relationship
 
 ### 🧠 ব্যাখ্যা:
 
@@ -1929,7 +2026,8 @@ $relatedModel = $comment->commentable; // হতে পারে Post, Video ব
 ---
 
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Route Model Binding ?
 
@@ -2050,7 +2148,8 @@ public function show(Product $product) {
 > Laravel automatically inject করে Model instance based on the route parameter. এটাকেই Route Model Binding বলে।
 
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : If so many requests hit on a app, then how many instances are created ? One time or many times ?
 
@@ -2093,7 +2192,8 @@ Laravel একটি **stateless** ফ্রেমওয়ার্ক — এর 
 Laravel এ প্রতিটি request এর জন্য আলাদা করে instance তৈরি হয়। এটা হয় কারণ Laravel stateless এবং প্রতিটি request কে independent ভাবে handle করে।
 
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Job-Queue ?
 
@@ -2176,7 +2276,8 @@ Laravel এর **Job Queue** system মূলত ব্যাকগ্রাউ�
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : If I send 1000 mails or any operation using a chunk, then if any operation fails , then will the next operation continue or not ?
 
@@ -2239,7 +2340,8 @@ User::chunk(100, function ($users) {
 
 ---
 
-<br>
+<br><div align="center"><strong>─────── ✦ x ✦ ───────</strong></div><br><br>
+
 
 # Q : What is Laravel Throttle ?
 
@@ -2326,6 +2428,11 @@ Laravel internally uses **cache system** (like Redis, database, file) to store r
 
 <br>
 
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
 # Q : What is Collection ?
 
 **Laravel Collection** হলো Laravel-এর একটি শক্তিশালী এবং সুবিধাজনক **data manipulation wrapper**, যা মূলত PHP array এর উপর ভিত্তি করে তৈরি। এটি `Illuminate\Support\Collection` ক্লাসের একটি ইন্সট্যান্স।
@@ -2394,3 +2501,1276 @@ Laravel Collection আপনাকে দেয়:
 * **complex data transformation** সহজে করার ক্ষমতা
 * performance-friendly এবং testable ডিজাইন
 
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : What is the purpose of using `.env` in a Laravel project ?
+
+`.env` ফাইল হলো Laravel প্রজেক্টের **environment configuration** ফাইল। এতে আপনার প্রজেক্টের **সেন্সিটিভ ও পরিবেশ নির্ভর সেটিংস** রাখা হয়, যেমন:
+
+* ডাটাবেজের তথ্য (DB\_HOST, DB\_USERNAME, DB\_PASSWORD)
+* অ্যাপ্লিকেশনের debug মোড (APP\_DEBUG)
+* অ্যাপ্লিকেশনের URL (APP\_URL)
+* মেইল সার্ভার সেটিংস
+* API কী, সিক্রেট কী ইত্যাদি
+
+---
+
+### `.env` ফাইলের উদ্দেশ্য:
+
+1. **পরিবেশ আলাদা রাখা:**
+   Development, Testing, Production—প্রতিটা environment এর জন্য আলাদা settings দরকার। `.env` ফাইল দিয়ে সহজেই পরিবেশ অনুযায়ী কনফিগারেশন রাখা যায়।
+
+2. **সিকিউরিটি বাড়ানো:**
+   সেন্সিটিভ তথ্য `.env` ফাইলে রাখা হয় যাতে কোডবেস থেকে আলাদা থাকে এবং গিট-এ commit না হয় (কারণ `.env` সাধারণত `.gitignore` তে থাকে)।
+
+3. **সহজ কনফিগারেশন ম্যানেজমেন্ট:**
+   `.env` ফাইল পরিবর্তন করে অ্যাপ্লিকেশনের বিভিন্ন সেটিংস সহজে বদলানো যায়, কোড না ছুঁইয়েই।
+
+---
+
+### Laravel এ `.env` এর ব্যবহার:
+
+Laravel প্রজেক্ট রান করার সময় `.env` থেকে সব environment variables `config` ফাইলগুলোতে লোড হয়।
+আপনি কোডে যেমন:
+
+```php
+env('DB_HOST', '127.0.0.1')
+```
+
+বা
+
+```php
+config('database.connections.mysql.host')
+```
+
+ব্যবহার করে `.env` ফাইলের মান নিতে পারেন।
+
+---
+
+### সারসংক্ষেপ:
+
+* `.env` হলো environment specific সেটিংস রাখার ফাইল
+* এটি অ্যাপ্লিকেশনের **configurable এবং সিক্রেট তথ্য** আলাদা করে নিরাপদে সংরক্ষণ করে
+* ডেভেলপমেন্ট থেকে প্রোডাকশনে যাওয়ার সময় কনফিগারেশন সহজে পরিবর্তনযোগ্য করে তোলে
+* `.env` ফাইল গিটে রাখা হয় না, যাতে সেন্সিটিভ ডাটা লিক না হয়
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : What is a polymorphic relationship in Eloquent? Can you give an example of its implementation?
+
+
+## 🧬 **Polymorphic Relationship কী?**
+
+Laravel Eloquent-এ **Polymorphic Relationship** হলো এমন একটি Relationship সিস্টেম, যেখানে একটি মডেল **বিভিন্ন ধরনের অন্য মডেলকে** associate করতে পারে **একটি common সম্পর্কের মাধ্যমে**।
+
+> অর্থাৎ, একটা কমন টেবিল (যেমন `comments`) ব্যবহার করে আপনি `Post`, `Video`, `Image` ইত্যাদি যেকোনো মডেলের সঙ্গে সম্পর্ক স্থাপন করতে পারেন।
+
+---
+
+## 🧩 কেন ব্যবহার করব?
+
+ধরুন আপনার কাছে আছে:
+
+* Post মডেল
+* Video মডেল
+* এবং Comment মডেল
+
+আপনি চান প্রতিটি **Post** এবং **Video**-র জন্য কমেন্ট করতে পারা যাবে।
+এখন চাইলে আপনি দুইটা আলাদা `post_comments` এবং `video_comments` টেবিল বানাতে পারতেন।
+
+কিন্তু Laravel এর **polymorphic relationship** ব্যবহার করলে একটা `comments` টেবিলই যথেষ্ট — তাতেই সব ধরনের কমেন্ট রাখা যাবে, এবং বুঝতেও পারবে কোনটা কোন মডেলের।
+
+---
+
+## ✅ **Laravel এ Polymorphic Relationship-এর ধরন:**
+
+1. 🟡 One-to-One Polymorphic
+2. 🟠 One-to-Many Polymorphic ✅ (সবচেয়ে জনপ্রিয়)
+3. 🔵 Many-to-Many Polymorphic
+
+এখানে আমরা মূলত **One-to-Many Polymorphic Relationship** ব্যাখ্যা করব — Post/Video → many Comments
+
+---
+
+## ✅ উদাহরণ: One-to-Many Polymorphic Relationship
+
+### 🔨 Step 1: Comments টেবিলের Migration তৈরি করা
+
+```php
+Schema::create('comments', function (Blueprint $table) {
+    $table->id();
+    $table->text('content');
+    $table->morphs('commentable'); 
+    // এটি স্বয়ংক্রিয়ভাবে ২টি কলাম তৈরি করে:
+    // 1. commentable_id
+    // 2. commentable_type
+    $table->timestamps();
+});
+```
+
+**`commentable_id`** → কোন মডেলের ID
+**`commentable_type`** → কোন মডেল? Post না Video?
+
+---
+
+### 📦 Step 2: Model-এ সম্পর্ক define করা
+
+#### 🔹 Post মডেল (Post.php)
+
+```php
+class Post extends Model
+{
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+}
+```
+
+#### 🔹 Video মডেল (Video.php)
+
+```php
+class Video extends Model
+{
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+}
+```
+
+#### 🔸 Comment মডেল (Comment.php)
+
+```php
+class Comment extends Model
+{
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+}
+```
+
+🧠 **ব্যাখ্যা:**
+
+* `Post` ও `Video` উভয়ই **"commentable"** নামে polymorphic relationship সেট করেছে
+* `Comment` আবার `commentable` রিলেশন দিয়ে যেকোনো parent (Post বা Video) কে চিনতে পারে
+
+---
+
+### 💬 Step 3: কিভাবে ব্যবহার করবেন?
+
+#### A. একটি Post-এ কমেন্ট যোগ করুন:
+
+```php
+$post = Post::find(1);
+
+$post->comments()->create([
+    'content' => 'This is a comment on a post.'
+]);
+```
+
+#### B. একটি Video-তে কমেন্ট যোগ করুন:
+
+```php
+$video = Video::find(1);
+
+$video->comments()->create([
+    'content' => 'This is a comment on a video.'
+]);
+```
+
+#### C. Post বা Video থেকে সব Comments পড়া:
+
+```php
+$post = Post::find(1);
+foreach ($post->comments as $comment) {
+    echo $comment->content;
+}
+
+$video = Video::find(1);
+foreach ($video->comments as $comment) {
+    echo $comment->content;
+}
+```
+
+#### D. Comment থেকে তার parent (Post/Video) বের করা:
+
+```php
+$comment = Comment::find(1);
+$parent = $comment->commentable; // এটা হতে পারে Post বা Video
+
+echo $parent->title;
+```
+
+---
+
+## 🔚 উপসংহার:
+
+| বিষয়                       | ব্যাখ্যা                                                   |
+| -------------------------- | ---------------------------------------------------------- |
+| ✅ উদ্দেশ্য                 | একাধিক মডেলকে একটিমাত্র রিলেশন/টেবিলের মাধ্যমে সংযুক্ত করা |
+| ✅ সুবিধা                   | কোড রিইউজ, কম টেবিল, ক্লিন ডিজাইন                          |
+| ✅ গুরুত্বপূর্ণ টেবিল ফিল্ড | `commentable_id`, `commentable_type`                       |
+| ✅ ব্যবহারের জায়গা          | Comment, Tag, Like, Attachment, Reaction ইত্যাদি           |
+
+---
+
+## 🧠 মনে রাখবেন:
+
+* `morphs()` = দুইটি ফিল্ড তৈরি করে (`*_id`, `*_type`)
+* `morphTo()` = polymorphic relation এর reverse
+* একই pattern ব্যবহার করে Tag, Like, Image, Attachment সম্পর্ক গুলোও build করা যায়।
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : How would you create and use a `Query Scope` in Laravel?
+
+Laravel-এ **Query Scope** এমন একটি powerful feature, যা আপনাকে Eloquent model-এ reusable query logic সংজ্ঞায়িত করতে দেয়।
+
+এটি মূলত Eloquent-এর জন্য একটা **custom method** — যেটা আপনি বারবার ব্যবহার করতে পারেন query-তে।
+
+---
+
+## 🧩 Query Scope কত প্রকার?
+
+Laravel-এ দুই ধরনের Query Scope থাকে:
+
+1. ✅ **Local Scope** (নাম দিয়ে call করা হয়)
+2. ✅ **Global Scope** (স্বয়ংক্রিয়ভাবে সব query-তে apply হয়)
+
+---
+
+## ✅ Local Scope: কীভাবে তৈরি করবেন?
+
+### 🎯 Step 1: Model-এ scope define করুন
+
+```php
+// App\Models\Post.php
+
+class Post extends Model
+{
+    // Local Scope
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
+}
+```
+
+🔍 লক্ষ্য করো: scope method-এর নাম **`scopePublished`**, কিন্তু call করার সময় আমরা শুধু `published()` লিখব।
+
+---
+
+### 🎯 Step 2: কিভাবে ব্যবহার করবেন?
+
+```php
+$publishedPosts = Post::published()->get();
+```
+
+> এটি এমন query তৈরি করে:
+> `SELECT * FROM posts WHERE is_published = true`
+
+---
+
+### 🧠 আরও উদাহরণ:
+
+#### 🔹 Active Users Scope
+
+```php
+// User.php
+
+public function scopeActive($query)
+{
+    return $query->where('status', 'active');
+}
+
+// ব্যবহার
+$activeUsers = User::active()->get();
+```
+
+#### 🔹 Custom Parameter সহ Scope
+
+```php
+// Product.php
+
+public function scopePriceGreaterThan($query, $amount)
+{
+    return $query->where('price', '>', $amount);
+}
+
+// ব্যবহার
+$expensiveProducts = Product::priceGreaterThan(1000)->get();
+```
+
+---
+
+## ✅ Global Scope (সংক্ষেপে)
+
+যদি আপনি চান কোনো condition সব query-তে স্বয়ংক্রিয়ভাবে যুক্ত হোক, তাহলে **Global Scope** ব্যবহার করবেন।
+
+```php
+// App\Scopes\ActiveScope.php
+
+class ActiveScope implements Scope
+{
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder->where('status', 'active');
+    }
+}
+
+// User.php model-এ boot method এ
+protected static function booted()
+{
+    static::addGlobalScope(new ActiveScope);
+}
+```
+
+এখন `User::all()` করলে সবসময় `status = active` filter apply হবে।
+
+---
+
+## 🧠 উপকারিতা:
+
+| সুবিধা                | ব্যাখ্যা                                     |
+| --------------------- | -------------------------------------------- |
+| 🔁 Reusable Query     | একই কোড বারবার লেখার দরকার নেই               |
+| 🧼 Clean Controller   | Controller বা Repository কোড ছোট রাখা যায়    |
+| 🔒 DRY Principle      | DRY (Don't Repeat Yourself) মানা যায়         |
+| 📊 Parametrized Scope | Dynamic value support করে (price, date etc.) |
+
+---
+
+## ✅ উপসংহার:
+
+| ধরণ            | কাজ                                                |
+| -------------- | -------------------------------------------------- |
+| `scopeXyz`     | Local Scope method                                 |
+| `Model::xyz()` | Scope call                                         |
+| Reusability    | High                                               |
+| Use-case       | Common filters (published, active, verified, etc.) |
+
+---
+
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : What is the difference between `queue` and `event` in Laravel? Can you provide a use case for each?
+
+
+Laravel-এ **Queue** এবং **Event** দুটোই আলাদা কাজের জন্য ব্যবহৃত হলেও, অনেক সময় এগুলো একসাথে কাজও করে।
+
+দুটোই **asynchronous operation** সহজ করার জন্য ব্যবহৃত হয়, কিন্তু তাদের কাজের ধরন, উদ্দেশ্য ও ব্যবহারের পদ্ধতিতে কিছু পার্থক্য রয়েছে।
+
+---
+
+## 🧩 মূল পার্থক্য: Queue vs Event
+
+| বিষয়               | Queue                                 | Event                                                            |
+| ------------------ | ------------------------------------- | ---------------------------------------------------------------- |
+| কাজ                | Delayed বা background task handle করে | নির্দিষ্ট একটা trigger-এর পর এক বা একাধিক listener কে notify করে |
+| Execution Time     | পরে execute হয় (job dispatch করলে)    | সাথে সাথে listener trigger হয়                                    |
+| Primary Purpose    | Time-consuming task গুলো delay করা    | Loose coupling এবং action trigger করা                            |
+| Laravel Class      | `Job` class                           | `Event` ও `Listener` class                                       |
+| Queue ব্যবহার করে? | অবশ্যই                                | ইচ্ছা করলে queue-এর সাথে যুক্ত করা যায়                           |
+| উদাহরণ             | Email পাঠানো, report generate         | User registered হলে welcome mail পাঠানো, audit log তৈরি          |
+
+---
+
+## ✅ Queue - কবে ব্যবহার করবো?
+
+যখন তুমি চাও, কোনো কাজ **immediate না হয়ে background-এ পরে** চলুক।
+
+### 📌 Use Case: Email পাঠানো
+
+```php
+// Controller বা কোথাও
+SendWelcomeEmail::dispatch($user);
+```
+
+**Job Class:**
+
+```php
+class SendWelcomeEmail implements ShouldQueue {
+    public function handle() {
+        Mail::to($this->user->email)->send(new WelcomeMail($this->user));
+    }
+}
+```
+
+> এখানে email পাঠানো job queue তে পড়ে যাবে, real-time user delay হবে না।
+
+---
+
+## ✅ Event - কবে ব্যবহার করবো?
+
+যখন তুমি চাও, একটা action trigger হবার সাথে সাথে একাধিক response হোক, কিন্তু loosely coupled ভাবে।
+
+### 📌 Use Case: User Registration
+
+```php
+// UserRegistered ইভেন্ট fire করা
+event(new UserRegistered($user));
+```
+
+**Event Listener গুলো:**
+
+```php
+class SendWelcomeNotification {
+    public function handle(UserRegistered $event) {
+        // Welcome Notification পাঠানো
+    }
+}
+
+class LogUserActivity {
+    public function handle(UserRegistered $event) {
+        // Activity Log করা
+    }
+}
+```
+
+> এখানে `UserRegistered` ইভেন্ট fire করলে ২টি আলাদা listener কাজ করে — একটাতে mail, অন্যটাতে log।
+
+---
+
+## 🧠 Event & Queue একসাথে?
+
+Laravel-এ Event এর Listener গুলোকেও queue-তে পাঠানো যায়। অর্থাৎ —
+
+```php
+class SendWelcomeNotification implements ShouldQueue
+```
+
+এভাবে দিলে ইভেন্ট trigger হলেও Listener background-এ কাজ করবে।
+
+---
+
+## 🧪 Summary Table:
+
+| Aspect             | Queue                       | Event                           |
+| ------------------ | --------------------------- | ------------------------------- |
+| Purpose            | Background task             | Trigger-based multiple response |
+| Delayable          | ✅                           | Depends                         |
+| Queue Required     | ✅                           | Optional                        |
+| Example            | Image resize, Email sending | UserRegistered, OrderPlaced     |
+| Scalable           | ✅                           | ✅                               |
+| Used with Listener | ❌                           | ✅                               |
+
+---
+
+## ✅ কবে কোনটা ব্যবহার করবো?
+
+* 👉 Long time লাগে এমন কাজ হলে → **Queue**
+* 👉 কোনো event এর পর একাধিক response দরকার হলে → **Event**
+* 👉 Event + Job delay দরকার হলে → **Queueable Listener**
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : What is CSRF protection, and how does Laravel implement it?
+
+**CSRF (Cross-Site Request Forgery)** হলো একটি security vulnerability, যেখানে একজন attacker ব্যবহারকারীর অজান্তে তার লগইন সেশনের মাধ্যমে malicious অনুরোধ (request) পাঠাতে পারে।
+
+Laravel এ CSRF protection খুবই built-in ও শক্তিশালীভাবে handle করা হয়।
+
+---
+
+## 🛡️ CSRF Protection কী?
+
+**CSRF Attack**:
+একটা attacker যদি তোমার website-এর কোনো authenticated user কে তার অজান্তে কিছু request পাঠাতে বাধ্য করে (যেমনঃ form submit করে, data delete করে), তখন সেটা হয় CSRF attack।
+
+> 🧠 উদাহরণ: তুমি যেই site-এ লগইন করো, attacker সেই লগইনের session ব্যবহার করে backend এ request পাঠিয়ে দেয়।
+
+---
+
+## ✅ Laravel কীভাবে CSRF থেকে protect করে?
+
+Laravel প্রত্যেকটি **POST, PUT, PATCH, DELETE** request-এর সাথে একটি **CSRF Token** পাঠায় এবং সেটা verify করে।
+
+---
+
+## 🔐 CSRF Token কী?
+
+Laravel automatically generate করে একটি unique **token** প্রতিটি user session এর জন্য।
+
+এই token:
+
+* Form এর মধ্যে hidden input হিসেবে থাকে
+* Server এ verify হয়
+* Invalid হলে request reject হয়
+
+---
+
+## 📌 Laravel form এ কিভাবে token use হয়?
+
+### Blade এ:
+
+```blade
+<form method="POST" action="/submit">
+    @csrf
+    <!-- form inputs -->
+    <button type="submit">Submit</button>
+</form>
+```
+
+👉 `@csrf` লিখলেই এটা নিচের HTML generate করে:
+
+```html
+<input type="hidden" name="_token" value="lksjdf9023..." />
+```
+
+---
+
+## 🧪 Behind the Scene: Middleware
+
+Laravel এ `VerifyCsrfToken` নামে middleware আছে যা token validate করে:
+
+```php
+// app/Http/Kernel.php
+'web' middleware group এর মধ্যে থাকে:
+\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
+```
+
+---
+
+## 🧠 API route এ CSRF token লাগে না কেন?
+
+* API routes (routes/api.php) typically use **token-based authentication (like Sanctum or Passport)**
+* তাই এগুলো CSRF exempted করা হয়
+
+---
+
+## ❌ যদি CSRF token না দেওয়া হয়?
+
+তাহলে Laravel এই error দেখাবে:
+
+```
+419 | Page Expired
+```
+
+---
+
+## ✅ Exclude route from CSRF (Not Recommended Unless Necessary)
+
+```php
+// app/Http/Middleware/VerifyCsrfToken.php
+protected $except = [
+    'payment/ipn-callback',
+];
+```
+
+---
+
+## 🔒 CSRF এর সুবিধা:
+
+| Benefit                    | Description                                  |
+| -------------------------- | -------------------------------------------- |
+| ✅ Secure Forms             | Form submission safe হয়                      |
+| ✅ Prevents Forged Requests | Authenticated user এর সেশনের অপব্যবহার ঠেকায় |
+| ✅ Session-bound token      | Per-user unique security                     |
+
+---
+
+## 🎯 Summary:
+
+* Laravel automatically CSRF token inject করে
+* Form-এ `@csrf` লিখলেই হয়ে যায়
+* Middleware request verify করে
+* GET request exempted, POST, PUT, PATCH, DELETE request verify হয়
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+
+# Q : What are some strategies for optimizing a Laravel application’s performance?
+
+একজন Laravel developer হিসেবে performance optimization খুব গুরুত্বপূর্ণ — যেন অ্যাপটি দ্রুত response দেয়, scalable হয়, এবং server load কম থাকে। নিচে দেওয়া এই **Bangla-English mixed** explanation তোমার দেওয়া content কে সুন্দরভাবে ব্যাখ্যা করে এবং Markdown-compatible `--x--` সাইন দিয়ে সাজানো।
+
+---
+
+## 🚀 1. **Cache Routes, Views, and Configurations**
+
+Laravel প্রতিবার app load করার সময় route/config/view compile করে। Production environment-এ এগুলো আগেই compile করে cache করলে load time অনেক কমে যায়।
+
+```bash
+php artisan route:cache
+php artisan config:cache
+php artisan view:cache
+```
+
+🧠 Debugging করলে এগুলো clear করো:
+
+```bash
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
+```
+
+
+---
+
+## ⚡ 2. **Optimize Database Queries**
+
+🔹 Eager Loading:
+
+```php
+$users = User::with('profile')->get(); // avoid N+1 problem
+```
+
+🔹 Indexing: `WHERE`, `JOIN`, `ORDER BY` যেসব column-এ apply হয়, সেখানে database index থাকলে query অনেক দ্রুত চলে।
+
+🔹 Select Only Required Columns:
+
+```php
+User::select('id', 'name')->get(); // avoid SELECT *
+```
+
+🔹 Pagination:
+
+```php
+User::paginate(20); // Avoid loading 1000+ rows at once
+```
+
+
+
+---
+
+## 🔁 3. **Use Caching for Data**
+
+Laravel এর cache system দিয়ে frequently-used data cache করে performance boost করা যায়।
+
+🔹 Manual Cache:
+
+```php
+Cache::put('users', $users, now()->addMinutes(10));
+```
+
+🔹 Query Cache:
+
+```php
+$users = Cache::remember('users', 600, function () {
+    return DB::table('users')->get();
+});
+```
+
+🔹 Full Page Cache:
+Static বা rarely-changing page হলে full response cache করতে পারো।
+
+
+
+---
+
+## 🧰 4. **Optimize Autoloading**
+
+Production-এ unnecessary file load না করার জন্য optimized autoloading দরকার।
+
+```bash
+composer install --optimize-autoloader --no-dev
+```
+
+
+
+---
+
+## 🌐 5. **Reduce HTTP Requests**
+
+🔹 Laravel Mix দিয়ে JS/CSS combine ও minify করো:
+
+```bash
+npm run production
+```
+
+🔹 HTTP/2 server use করো (Nginx with HTTP/2 enabled) যাতে একসাথে অনেক request handle করা যায়।
+
+
+
+---
+
+## 📬 6. **Use Queues for Time-Consuming Tasks**
+
+Email sending, file processing ইত্যাদি কাজ queue তে background এ পাঠাও:
+
+```php
+dispatch(new SendEmailJob($user));
+```
+
+✅ এতে response দ্রুত আসে এবং user wait করে না।
+
+
+
+---
+
+## ⚙️ 7. **Enable OPcache**
+
+PHP script bytecode cache করে OPcache — এটাতে parsing time বাঁচে।
+
+🔧 Enable it in `php.ini`:
+
+```ini
+opcache.enable=1
+opcache.memory_consumption=128
+opcache.validate_timestamps=0
+```
+
+
+
+---
+
+## 🌍 8. **Use a Content Delivery Network (CDN)**
+
+Static assets যেমন image, js, css — এগুলো CDN থেকে serve করলে দ্রুত load হয়।
+
+* Cloudflare, BunnyCDN, AWS CloudFront use করা যায়।
+
+
+
+---
+
+## 🖼️ 9. **Compress and Optimize Images**
+
+Laravel এ [Intervention Image](https://image.intervention.io/) use করে image optimize করো।
+
+```php
+$image = Image::make($request->file('image'))->resize(300, 200);
+$image->save(public_path('optimized.jpg'));
+```
+
+
+
+---
+
+## 💽 10. **Use a Faster Database (Where Possible)**
+
+🔹 Redis/Memcached - session, queue, caching এর জন্য।
+
+🔹 Query Breakdown - Complex multi-join query split করে load-balanced result পাও।
+
+
+
+---
+
+## 🧵 11. **Optimize Server and Deployment**
+
+🔹 Use Nginx + PHP-FPM
+🔹 Properly configure worker pool
+🔹 Keep PHP, Laravel, and server software updated
+
+
+
+## 📦 12. **Use HTTP Caching Headers**
+
+```php
+return response($content)
+    ->header('Cache-Control', 'public, max-age=31536000');
+```
+
+Browser এই asset গুলো বারবার download না করে cache থেকে load করে।
+
+---
+
+## ✅ Final Summary Table:
+
+| Strategy                    | Description                 |
+| --------------------------- | --------------------------- |
+| 🗺️ Route/View/Config Cache | Compile করে fast response   |
+| 🔎 Eager Loading & Index    | DB query optimized          |
+| 💾 Redis/Data Cache         | Reduce DB hits              |
+| 📬 Queues                   | Async background task       |
+| 🧠 OPcache                  | Faster PHP execution        |
+| 🌐 CDN & Image Optimization | Reduce asset size & latency |
+| 💻 Composer Optimize        | Lightweight deployment      |
+
+---
+
+<br>
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+<br>
+<br>
+
+
+# Q : How do you optimize large database queries in Laravel?
+
+অবশ্যই! নিচে Laravel-এ **large database query optimization** করার জন্য best practices গুলো Bangla-English mix ভাষায় সাজানো হয়েছে, যাতে interview বা documentation এর জন্য তুমি সহজে ব্যবহার করতে পারো।
+
+---
+
+## ✅ 1. Eager Loading ব্যবহার করে N+1 Problem Avoid করা
+
+```php
+$posts = Post::with('comments')->get();
+```
+
+Laravel-এ যদি তুমি `with()` ব্যবহার না করো, তাহলে প্রতিটা post এর জন্য আলাদা আলাদা করে comment query execute হবে (এটাকেই N+1 problem বলে)।
+
+Eager Loading দিয়ে related model একসাথে load করা যায়, যেটা performance boost করে।
+
+---
+
+## ✅ 2. প্রয়োজনীয় Column গুলো select() করা
+
+```php
+$users = User::select('id', 'name', 'email')->get();
+```
+
+`SELECT *` ব্যবহার না করে, শুধুমাত্র যেসব column দরকার সেগুলা `select()` করে query করো। এতে করে query lightweight হয় এবং কম data memory-তে লোড হয়।
+
+---
+
+## ✅ 3. Pagination ব্যবহার করা
+
+```php
+$users = User::paginate(50);
+```
+
+সার্ভার এ একসাথে ১০,০০০ rows load না করে paginate করে প্রতিবার ৫০টা করে fetch করলে performance অনেক ভালো থাকে।
+
+---
+
+## ✅ 4. Smart Where Clause ব্যবহার করা
+
+```php
+$users = User::where('status', 'active')->get();
+```
+
+Database থেকেই filter করে আনো। Server-side filtering বেশি memory খায়, তাই যতটা সম্ভব SQL level-এ filter করো।
+
+---
+
+## ✅ 5. Database Indexing
+
+যেসব column-এ frequently `where`, `join` বা `orderBy` করো (যেমন: `email`, `user_id`, `status`) – সেগুলায় index apply করো।
+
+Indexing না থাকলে query গুলা full table scan করবে, যেটা slow করে দেয়।
+
+---
+
+## ✅ 6. Cache Query Result
+
+```php
+$users = Cache::remember('active_users', now()->addMinutes(10), function () {
+    return User::where('status', 'active')->get();
+});
+```
+
+bar bar একই query করলে database hit হয়। Cache ব্যবহার করলে একবার query করে ফলাফল রেখে দেয়, পরবর্তীতে cache থেকে রেজাল্ট পাওয়া যায়।
+
+---
+
+## ✅ 7. Chunk ব্যবহার করে Large Dataset Process করা
+
+```php
+User::chunk(100, function ($users) {
+    foreach ($users as $user) {
+        // process each user
+    }
+});
+```
+
+অনেক বড় data load করলে memory overflow হয়। `chunk()` method data-কে ভাগ ভাগ করে এনে কাজ করে।
+
+---
+
+## ✅ 8. Raw SQL query এড়িয়ে Query Builder/Eloquent ব্যবহার করা
+
+Laravel এর Query Builder এবং Eloquent ORM use করলে query safe এবং readable হয়। Try to avoid raw query unless absolutely needed.
+
+---
+
+## ✅ 9. DB::listen() দিয়ে Query Debug করা
+
+```php
+DB::listen(function ($query) {
+    logger($query->sql);
+});
+```
+
+query কে analyze করার জন্য এটা use করো। কোন query বেশি সময় নিচ্ছে বা slow perform করছে – সেটা ধরতে সহজ হবে।
+
+---
+
+## ✅ 10. Join ব্যবহার করা Multiple Query এর জায়গায়
+
+```php
+$users = DB::table('users')
+    ->join('orders', 'users.id', '=', 'orders.user_id')
+    ->select('users.name', 'orders.total')
+    ->get();
+```
+
+একাধিক query এর পরিবর্তে `join` ব্যবহার করলে দ্রুত data fetch করা যায় এবং DB hit কম হয়।
+
+---
+
+## ✅ 11. DB Level Function ব্যবহার করা (count, sum, avg)
+
+```php
+$total = Order::where('status', 'paid')->sum('amount');
+```
+
+Laravel এ loop করে হিসাব করার থেকে ভালো DB function use করা, যেমন `count()`, `sum()`, `max()` etc.
+
+---
+
+## ✅ 12. Eager Loading এ constraint apply করা
+
+```php
+$posts = Post::with(['comments' => function ($query) {
+    $query->where('approved', true);
+}])->get();
+```
+
+Eager load করেও তুমি কিভাবে data fetch হবে সেটা filter করতে পারো। এতে করে unapproved comment গুলা avoid হয়।
+
+---
+
+## ✅ 13. Sorting এর সময় index নিশ্চিত করা
+
+```php
+$users = User::orderBy('created_at', 'desc')->take(10)->get();
+```
+
+যে column এ sort করা হবে (`created_at`), সেটা indexed থাকলে sorting অনেক দ্রুত হয়।
+
+---
+
+## ✅ 14. Lazy Loading প্রয়োজন হলে use করা
+
+```php
+foreach ($posts as $post) {
+    $comments = $post->comments; // lazy loaded
+}
+```
+
+যদি সব post-এর comment দরকার না হয়, তাহলে lazy loading করা ভালো। তবে বুঝে use করতে হবে, না হলে performance down হতে পারে।
+
+---
+
+## ✅ Bonus: EXPLAIN দিয়ে Query Plan Check করা
+
+```sql
+EXPLAIN SELECT * FROM users WHERE status = 'active';
+```
+
+MySQL এর `EXPLAIN` command দিয়ে query execution plan দেখা যায় – কোন index use হচ্ছে, কোনটা slow ইত্যাদি।
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : What is the difference between `bind()` and `singleton()` in the service container?
+
+Laravel-এর Service Container এ `bind()` এবং `singleton()` দুইটা method ব্যবহার হয় dependency binding করার জন্য। এদের মধ্যে পার্থক্যটা mainly instance creation এর behavior নিয়ে।
+
+
+---
+
+## 🔄 `bind()` কী করে?
+
+`bind()` প্রতিবার যখন service container থেকে ওই class বা interface কে resolve করা হয়, তখন **নতুন একটা instance তৈরি করে দেয়**।
+
+```php
+App::bind('App\Services\PaymentService', function ($app) {
+    return new PaymentService();
+});
+```
+
+> যখনই `App::make('App\Services\PaymentService')` বা constructor injection এর মাধ্যমে call করবে, নতুন করে object তৈরি হবে।
+
+🟢 Use case:
+যখন তোমার প্রতি বার নতুন instance দরকার হয়, যেমন — user-specific বা request-specific data handle করতে হবে।
+
+---
+
+## 🧠 `singleton()` কী করে?
+
+`singleton()` প্রথমবার resolve করার সময় **একবার মাত্র instance তৈরি করে** এবং পরবর্তীতে সব জায়গায় **same instance রিটার্ন করে**।
+
+```php
+App::singleton('App\Services\PaymentService', function ($app) {
+    return new PaymentService();
+});
+```
+
+> অর্থাৎ একবারই object তৈরি হয়, এবং বাকি সব জায়গায় সেই instance টি শেয়ার করা হয়।
+
+🟢 Use case:
+যখন তুমি global বা shared state রাখতে চাও, যেমন — logger, config manager, cache manager, ইত্যাদি।
+
+---
+
+## 🎯 সংক্ষেপে পার্থক্য (Summary):
+
+| Feature     | `bind()`                               | `singleton()`                  |
+| ----------- | -------------------------------------- | ------------------------------ |
+| Instance    | প্রতি বার নতুন object                  | একবার তৈরি, পরে বার বার reuse  |
+| Use case    | Stateless or short-living services     | Shared or long-living services |
+| Performance | কম efficient (new instance every time) | বেশি efficient (reuse)         |
+
+---
+
+## ✅ Example Test
+
+```php
+App::singleton('Foo', function () {
+    return new stdClass();
+});
+
+$one = app('Foo');
+$two = app('Foo');
+
+var_dump($one === $two); // true
+```
+
+```php
+App::bind('Bar', function () {
+    return new stdClass();
+});
+
+$one = app('Bar');
+$two = app('Bar');
+
+var_dump($one === $two); // false
+```
+
+---
+
+Laravel এর context এ, তুমি যদি এমন কোনো class define করো যেটা configuration অথবা constant data ধরে রাখে, তাহলে `singleton()` use করো। আর এমন class যেটা প্রতি request অনুযায়ী পরিবর্তন হতে পারে, সেখানে `bind()` better option।
+
+চলো, এখন `bind()` আর `singleton()` এর **real-life practical example** দেখি —
+
+---
+
+## 🧾 Real-Life Example of `singleton()`:
+
+**Use Case**: `SettingsService` — যেটা database থেকে site-wide settings (site name, logo, timezone ইত্যাদি) একবার load করে এবং app জুড়ে use হয়।
+
+```php
+// AppServiceProvider.php
+public function register()
+{
+    $this->app->singleton(SettingsService::class, function ($app) {
+        return new SettingsService();
+    });
+}
+```
+
+```php
+// Anywhere in the app
+$settings = app(SettingsService::class);
+echo $settings->get('site_name');
+```
+
+🟢 **Reason to use `singleton()`**: Settings গুলো একবার load করেই app জুড়ে ব্যবহার করবো। বারবার query না করে performance improve করা হয়।
+
+---
+
+## 🛒 Real-Life Example of `bind()`:
+
+**Use Case**: `CartService` — প্রতিটা user এর জন্য আলাদা shopping cart প্রয়োজন। তাই প্রতি request-এ নতুন instance দরকার।
+
+```php
+// AppServiceProvider.php
+public function register()
+{
+    $this->app->bind(CartService::class, function ($app) {
+        return new CartService(auth()->user());
+    });
+}
+```
+
+```php
+// In Controller
+$cart = app(CartService::class);
+$cart->add($productId);
+```
+
+🟢 **Reason to use `bind()`**: প্রতি user/request অনুযায়ী নতুন cart object চাই — যেন user-specific cart আলাদা থাকে।
+
+---
+
+## 🔁 কখন bind(), কখন singleton()?
+
+| Use Case                          | Method        | কেন?                                  |
+| --------------------------------- | ------------- | ------------------------------------- |
+| Site-wide config/service          | `singleton()` | একবার load করলেই যথেষ্ট               |
+| Per-user বা request-based service | `bind()`      | প্রতি user/request আলাদা object দরকার |
+
+---
+
+যদি তুমি **CacheService, EmailService, PaymentGateway, PDF Generator** ইত্যাদির মতো service বানাও, তখন এই pattern গুলো খুব কাজে আসে।
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+# Q : Explain how Laravel's middleware pipeline works. How would you create and chain multiple middlewares?
+
+Laravel-এর **middleware pipeline** একটা powerful mechanism, যা HTTP request আসার পরে এবং response যাওয়ার আগে অনেকগুলো layer (middleware) এর ভিতর দিয়ে pass হয়। এই process টাকেই middleware pipeline বলা হয়।
+
+---
+
+## 🧠 Middleware Pipeline কীভাবে কাজ করে?
+
+Laravel এ যখন একটা HTTP request আসে:
+
+1. Request প্রথমে `public/index.php` file এ ঢোকে।
+2. তারপর Kernel class (`app/Http/Kernel.php`) request কে handle করে।
+3. Kernel বিভিন্ন middleware list ধরে middleware গুলোর উপর দিয়ে request কে pass করে দেয়।
+4. প্রতিটি middleware request কে inspect/modify করতে পারে, বা next middleware এ pass করে দেয়।
+
+এইভাবে একটার পর একটা middleware এর ভিতর দিয়ে request "chain" হয়ে controller পর্যন্ত পৌঁছায়।
+
+### 📤 Reverse chain:
+
+Controller থেকে যখন response তৈরি হয়, তখন ঠিক ওইসব middleware আবার reverse-ভাবে execute হয় এবং তারপর response client এ যায়।
+
+---
+
+## 🛠️ Middleware বানানোর নিয়ম:
+
+```bash
+php artisan make:middleware CheckIsAdmin
+```
+
+```php
+// app/Http/Middleware/CheckIsAdmin.php
+
+public function handle($request, Closure $next)
+{
+    if (!auth()->check() || !auth()->user()->is_admin) {
+        return redirect('/no-access');
+    }
+
+    return $next($request);
+}
+```
+
+🔁 `handle()` method-এ `$next($request)` call করা মানে হচ্ছে — "পরবর্তী middleware কে ডেকে দাও"।
+
+---
+
+## 🧩 Middleware Register করা:
+
+```php
+// app/Http/Kernel.php
+
+protected $routeMiddleware = [
+    'is_admin' => \App\Http\Middleware\CheckIsAdmin::class,
+];
+```
+
+---
+
+## 🔗 Multiple Middleware Chain করা:
+
+### ✅ Route level-এ:
+
+```php
+Route::get('/dashboard', function () {
+    // Only for verified admin users
+})->middleware(['auth', 'verified', 'is_admin']);
+```
+
+এখানে,
+
+* `auth`: Check করে user logged in কি না।
+* `verified`: Check করে email verified কি না।
+* `is_admin`: Custom middleware check করে user admin কি না।
+
+👉 Middleware গুলো উপরের order অনুযায়ী execute হয়।
+
+---
+
+## 🔁 Global Middleware vs Route Middleware
+
+| Type                  | Description                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------- |
+| **Global Middleware** | সব request-এর জন্য automatically apply হয় (e.g., TrimStrings, ConvertEmptyStringsToNull)। |
+| **Route Middleware**  | শুধুমাত্র নির্দিষ্ট route-এ apply হয়। (যেমন: `auth`, `verified`, `is_admin`)              |
+
+---
+
+## 🎯 Bonus: Group Middleware
+
+```php
+protected $middlewareGroups = [
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        // আরো অনেক
+    ],
+
+    'api' => [
+        'throttle:api',
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+];
+```
+
+---
+
+## ✅ Summary:
+
+* Middleware হচ্ছে Laravel-এর request/response filtering mechanism।
+* Request → Middleware 1 → Middleware 2 → Controller
+* Controller → Middleware 2 → Middleware 1 → Response
+* Middleware তুমি security, validation, logging ইত্যাদির জন্য ব্যবহার করতে পারো।
+* Middleware chain করার জন্য route-এ array হিসেবে middleware গুলো define করো।
+
+Laravel pipeline system খুব clean এবং powerful — এই structure এর কারণে app maintainability এবং security অনেক সহজ হয়ে যায়।
+
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>

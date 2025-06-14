@@ -1600,3 +1600,264 @@ Each service is its own Laravel project:
 
 ---
 
+<br>
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+<br>
+
+
+
+# Q: How do you handle API versioning in Laravel?
+
+Laravel-এ **API versioning** একটি খুব গুরুত্বপূর্ণ concept, বিশেষ করে যখন আপনি আপনার API নিয়মিত update করেন — কিন্তু পুরোনো version গুলোকেও support করতে চান।
+
+এটি মূলত এমন একটি কৌশল, যার মাধ্যমে আপনার API-এর বিভিন্ন version (v1, v2, v3...) আলাদাভাবে manage করতে পারেন, যাতে পুরাতন client-রা ভেঙে না যায়।
+
+---
+
+## 🧩 API Versioning কেন দরকার?
+
+* ✅ পুরোনো client/app কে ব্রেক না করেই নতুন features যুক্ত করা যায়
+* ✅ Backward compatibility বজায় রাখা যায়
+* ✅ Maintenance ও debug সহজ হয়
+* ✅ Smooth migration path provide করা যায়
+
+---
+
+## ✅ Laravel-এ API Versioning কিভাবে করবেন?
+
+Laravel-এ আমরা সাধারণত **Route based versioning** ব্যবহার করি।
+
+---
+
+### 🧱 Step-by-Step Implementation
+
+### ✅ 1. Route Structure:
+
+**routes/api.php** ফাইলে version অনুযায়ী আলাদা করে group করা হয়।
+
+```php
+// routes/api.php
+
+use App\Http\Controllers\Api\V1\UserController as V1UserController;
+use App\Http\Controllers\Api\V2\UserController as V2UserController;
+
+Route::prefix('v1')->group(function () {
+    Route::get('/users', [V1UserController::class, 'index']);
+});
+
+Route::prefix('v2')->group(function () {
+    Route::get('/users', [V2UserController::class, 'index']);
+});
+```
+
+---
+
+### ✅ 2. Controller Structure:
+
+```bash
+app/
+└── Http/
+    └── Controllers/
+        └── Api/
+            ├── V1/
+            │   └── UserController.php
+            └── V2/
+                └── UserController.php
+```
+
+প্রতিটি version আলাদা folder-এ রাখা হয়, যাতে আলাদা logic handle করা যায়।
+
+---
+
+### ✅ 3. Example Controller (v1)
+
+```php
+// app/Http/Controllers/Api/V1/UserController.php
+
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        return response()->json([
+            'version' => 'v1',
+            'data' => User::all()
+        ]);
+    }
+}
+```
+
+### ✅ 4. Example Controller (v2)
+
+```php
+// app/Http/Controllers/Api/V2/UserController.php
+
+namespace App\Http\Controllers\Api\V2;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        return response()->json([
+            'version' => 'v2',
+            'data' => User::select('id', 'name')->get()
+        ]);
+    }
+}
+```
+
+---
+
+## 🔀 Bonus: Header Based Versioning (Advanced)
+
+* যদি `Accept: application/vnd.myapp.v1+json` এর মতো custom header দিয়ে version নির্ধারণ করতে চান, middleware ব্যবহার করে detect করা যায়।
+
+---
+
+## 🧠 উপকারিতা:
+
+| সুবিধা                          | ব্যাখ্যা                                             |
+| ------------------------------- | ---------------------------------------------------- |
+| 🔁 আলাদা Controller per version | Easy maintainability                                 |
+| 🧪 Test করা সহজ                 | Version isolation ফলে নির্দিষ্ট version test করা যায় |
+| ⚙️ Deployment flexible          | নতুন feature release পুরোনো API ভেঙে না দিয়েই হয়     |
+
+---
+
+## ✅ উপসংহার:
+
+Laravel API versioning best practice:
+
+| Technique                   | Use-case                      |
+| --------------------------- | ----------------------------- |
+| `Route::prefix('v1')`       | সবচেয়ে জনপ্রিয় ও সহজ পদ্ধতি   |
+| Controller per version      | Clean separation              |
+| Middleware বা Header detect | Advanced approach             |
+| Subdomain versioning        | Optional (api.v1.example.com) |
+
+---
+
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+
+# Q : 12.What are resource controllers, and how are they beneficial for RESTful APIs?
+
+Laravel-এ **Resource Controllers** হলো এমন একধরনের controller যেটা automatically RESTful API-এর common CRUD (Create, Read, Update, Delete) method গুলো handle করার জন্য প্রস্তুত থাকে।
+
+---
+
+## 🧩 Resource Controller কী?
+
+Laravel resource controller এমন একটা controller structure, যেখানে নিচের 7টি method আগে থেকেই define করা থাকে:
+
+| Method         | HTTP      | URI                 | কাজ                         |
+| -------------- | --------- | ------------------- | --------------------------- |
+| `index()`      | GET       | /resource           | সব data দেখানো              |
+| `create()`     | GET       | /resource/create    | নতুন form দেখানো            |
+| `store()`      | POST      | /resource           | নতুন item সংরক্ষণ           |
+| `show($id)`    | GET       | /resource/{id}      | একটি নির্দিষ্ট item দেখানো  |
+| `edit($id)`    | GET       | /resource/{id}/edit | নির্দিষ্ট item-এর edit form |
+| `update($id)`  | PUT/PATCH | /resource/{id}      | item update                 |
+| `destroy($id)` | DELETE    | /resource/{id}      | item delete করা             |
+
+---
+
+## ✅ কিভাবে তৈরি করবেন?
+
+```bash
+php artisan make:controller PostController --resource
+```
+
+> এটি `app/Http/Controllers/PostController.php` ফাইলে সব ৭টি method সহ controller তৈরি করবে।
+
+---
+
+## ✅ Route define করার নিয়ম
+
+```php
+// routes/web.php অথবা routes/api.php
+
+Route::resource('posts', PostController::class);
+```
+
+এই এক লাইন দিয়ে উপরোক্ত সব ৭টি route automatically generate হয়ে যাবে।
+
+---
+
+## ✨ উপকারিতা (Benefits):
+
+| সুবিধা                      | ব্যাখ্যা                                     |
+| --------------------------- | -------------------------------------------- |
+| ✅ RESTful Convention অনুসরণ | Standard HTTP verbs (GET, POST, PUT, DELETE) |
+| ✅ কোড কম                    | এক লাইনে multiple route                      |
+| ✅ Maintainability           | Clean and structured controller              |
+| ✅ Scalability               | আলাদা আলাদা CRUD logic handle সহজ            |
+| ✅ Documentation Friendly    | Predictable route path ও methods থাকে        |
+
+---
+
+## 🧪 Example: `PostController`
+
+```php
+public function index() {
+    return Post::all();
+}
+
+public function store(Request $request) {
+    return Post::create($request->all());
+}
+
+public function show($id) {
+    return Post::findOrFail($id);
+}
+
+public function update(Request $request, $id) {
+    $post = Post::findOrFail($id);
+    $post->update($request->all());
+    return $post;
+}
+
+public function destroy($id) {
+    Post::destroy($id);
+    return response()->json(['message' => 'Deleted']);
+}
+```
+
+---
+
+## 🧠 Bonus Tips:
+
+* তুমি চাইলে শুধুমাত্র কিছু method এর জন্য resource controller limit করতে পারো:
+
+```php
+Route::resource('posts', PostController::class)->only(['index', 'store']);
+```
+
+* অথবা exclude করতে পারো:
+
+```php
+Route::resource('posts', PostController::class)->except(['create', 'edit']);
+```
+
+---
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
