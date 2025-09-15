@@ -1115,3 +1115,135 @@ $obj->sayHelloFromA();   // Output: Hello from A
 
 
 
+# # Explain `Callback function`, `Anonymous function` and `Closure`
+
+
+### ✅ ১. Callback Function (কলব্যাক ফাংশন)
+
+**সংজ্ঞা**: একটি ফাংশন যেটাকে অন্য একটি ফাংশনের ভিতরে argument হিসেবে পাঠানো হয় এবং সেই ফাংশন ভিতরে গিয়ে তাকে call করে।
+
+```php
+function sayHello($name) {
+    echo "Hello, $name";
+}
+
+function greet($callback) {
+    $callback("Ratul");
+}
+
+greet('sayHello'); // Output: Hello, Ratul
+```
+
+👉 এখানে `sayHello` হলো callback function, যেটা `greet()` এর মধ্যে থেকে কল হয়েছে।
+
+### 🎯 Laravel Validation Rule এ Callback:
+
+```php
+$request->validate([
+    'username' => [
+        'required',
+        function ($attribute, $value, $fail) {
+            if ($value === 'admin') {
+                $fail('The '.$attribute.' cannot be admin.');
+            }
+        }
+    ]
+]);
+```
+
+👉 এখানে `function ($attribute, $value, $fail)` হলো **callback function** যা Laravel validator-এর মাধ্যমে কল হয়।
+
+---
+
+### ✅ ২. Anonymous Function (নাম ছাড়া ফাংশন)
+
+**সংজ্ঞা**: এমন ফাংশন যার কোনো নাম নেই, সাধারণত একবারের জন্য ব্যবহার করা হয়।
+
+```php
+$greet = function($name) {
+    return "Hi, $name!";
+};
+
+echo $greet("Tisha"); // Output: Hi, Tisha!
+```
+
+👉 এখানে `function($name) { ... }` হলো anonymous function — কোনো নাম ছাড়াই একটা ভ্যারিয়েবলে রাখা হয়েছে।
+
+### Laravel Collection এ map/filter:
+
+```php
+$users = collect([
+    ['name' => 'Arif', 'active' => true],
+    ['name' => 'Nadim', 'active' => false],
+]);
+
+$activeUsers = $users->filter(function ($user) {
+    return $user['active'];
+});
+```
+
+👉 এখানে `function ($user)` হলো **anonymous function**, যেটা শুধুমাত্র একবার ব্যবহার হচ্ছে।
+
+---
+
+### ✅ ৩. Closure (ক্লোজার)
+
+**সংজ্ঞা**: Closure হলো এমন anonymous function যেটা বাইরের কোনো ভ্যারিয়েবল ব্যবহার করে (`use` কিওয়ার্ড দিয়ে)।
+
+```php
+$prefix = "Hello";
+
+$closure = function($name) use ($prefix) {
+    return "$prefix, $name!";
+};
+
+echo $closure("Riya"); // Output: Hello, Riya!
+```
+
+👉 এখানে `$prefix` বাইরের ভ্যারিয়েবল, যেটা `use ($prefix)` দিয়ে function এর ভিতরে আনা হয়েছে। এই ধারণাটাই হলো Closure।
+
+
+### 🎯 Laravel Route-এ Closure:
+
+```php
+Route::get('/hello', function () {
+    return "Hello World";
+});
+```
+
+👉 এখানে `function () { return "Hello World"; }` হলো **Closure**, যেটা বাইরের `$request`, `$user` ইত্যাদি variables `use` দিয়ে নিয়ে আসতে পারে।
+
+---
+
+### 🎯 Closure capturing variable:
+
+```php
+$user = "Shuvo";
+
+Route::get('/welcome', function () use ($user) {
+    return "Welcome, $user!";
+});
+```
+
+👉 এখানে `$user` বাইরে থাকলেও `use($user)` দিয়ে function এর ভিতরে আনা হয়েছে – এটিই **Closure এর মূল শক্তি**।
+
+---
+
+🔚 **সংক্ষেপে মনে রাখুন**:
+
+* Callback → function as argument
+* Anonymous Function → নাম ছাড়া function
+* Closure → বাইরের variable ধরে রাখে এমন anonymous function
+
+---
+
+## 🎁 Summary:
+
+| বাস্তব উদাহরণ              | Callback | Anonymous | Closure |
+| -------------------------- | -------- | --------- | ------- |
+| Laravel Validator          | ✅        | ✅         | ❌       |
+| Route::get()               | ❌        | ✅         | ✅       |
+| Collection filter/map      | ✅        | ✅         | ❌       |
+| Variable capture via `use` | ❌        | ❌         | ✅       |
+
+---
