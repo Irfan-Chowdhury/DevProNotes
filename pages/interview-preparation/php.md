@@ -31,7 +31,7 @@
 
 12. [How to handle the conflict of same method name in multiple `Traits` ?](#how-to-handle-the-conflict-of-same-method-name-in-multiple-traits) `[Brack IT]`
 
-
+13. [When understand `Static` need to use in PHP/Laravel ?]() `[WeDevs]`
 
 
 <br>
@@ -1247,3 +1247,140 @@ Route::get('/welcome', function () use ($user) {
 | Variable capture via `use` | ❌        | ❌         | ✅       |
 
 ---
+
+
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>
+
+
+# Q-13 : When understand `Static` need to use in PHP/Laravel ?
+
+## 🔹 প্রথমে বোঝো: `static` আসলে কী
+
+PHP-তে `static` মানে — কোনো ক্লাসের method বা property **instance ছাড়াই** অ্যাক্সেস করা যায়।
+অর্থাৎ object তৈরি না করেই সরাসরি কল করা যায়।
+
+```php
+class Helper {
+    public static function greet() {
+        return 'Hello!';
+    }
+}
+
+// Object ছাড়াই
+echo Helper::greet();
+```
+
+---
+
+## 🔹 Laravel-এ কখন `static` ব্যবহার করা হয়
+
+Laravel framework-এর অনেক জিনিসেই তুমি `static` ব্যবহার করতে দেখবে —
+যেমন: `Cache::put()`, `DB::table()`, `Route::get()` — কিন্তু এগুলো আসলে **Facades**,
+মানে static-looking syntax, but under the hood তারা **object instance-এ delegate করে।**
+
+অর্থাৎ এগুলো আসলে *true static* নয়, বরং **service container থেকে resolve হওয়া instance**।
+
+---
+
+## 🔹 তাহলে কখন নিজের কোডে `static` ব্যবহার করা উচিত
+
+তিনটা নির্দিষ্ট অবস্থায় `static` ব্যবহার যুক্তিসঙ্গত:
+
+---
+
+### 1️⃣ **Utility / Helper Method**
+
+যে মেথডের সাথে কোনো object state যুক্ত নেই, শুধু logic বা calculation দরকার।
+
+উদাহরণ:
+
+```php
+class PriceHelper {
+    public static function calculateTax($amount) {
+        return $amount * 0.15;
+    }
+}
+```
+
+এখানে কোনো `$this` নেই, তাই static যুক্তিযুক্ত।
+
+---
+
+### 2️⃣ **Constant Behavior (Factory Shortcut বা Singleton)**
+
+যদি class-এর behavior সব object-এর জন্য একই হয়, এবং তুমি object বারবার বানাতে না চাও।
+
+```php
+class Config {
+    public static $settings = [];
+
+    public static function set($key, $value) {
+        static::$settings[$key] = $value;
+    }
+}
+```
+
+---
+
+### 3️⃣ **Facade বা Service-Shortcut তৈরি করার সময়**
+
+Laravel-এর মতো করে তুমি নিজেও Facade তৈরি করতে পারো static API-এর সুবিধার জন্য।
+যেমন custom Facade:
+
+```php
+class Payment extends Facade {
+    protected static function getFacadeAccessor() { return 'payment'; }
+}
+```
+
+এতে তুমি লিখতে পারবে:
+
+```php
+Payment::process($order);
+```
+
+---
+
+## 🔹 কিন্তু কখন static **ব্যবহার করা উচিত নয়**
+
+1. যখন method-এ **stateful data** লাগে (`$this->property`)
+2. যখন **testability দরকার** (static method mock করা কঠিন)
+3. যখন future-এ dependency injection লাগতে পারে
+
+উদাহরণ:
+Repository, Service class, Controller — এসব static না করে instance-ভিত্তিক রাখাই শ্রেয়।
+
+---
+
+## 🔸 সংক্ষেপে মনে রাখো
+
+| কখন ব্যবহার করবে           | উদাহরণ                 | মন্তব্য                |
+| -------------------------- | ---------------------- | ---------------------- |
+| Stateless logic            | `Helper::formatDate()` | pure function style    |
+| Global utility             | `Config::set()`        | একবার load, বারবার use |
+| Facade-style API           | `Cache::get()`         | Laravel-style shortcut |
+| ❌ Avoid for business logic | `Order::place()`       | test/mock কঠিন হয়ে যায় |
+
+---
+
+সোজা কথায়:
+
+> **যখন class-এর behavior object state-এর ওপর নির্ভর করে না, তখনই `static` ব্যবহার করা ঠিক।**
+> নাহলে, dependency injection ব্যবহার করো — Laravel তাতে বেশি শক্তিশালী হয়ে ওঠে।
+
+---
+
+
+---
+
+
+<br>
+
+<div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
+
+<br>

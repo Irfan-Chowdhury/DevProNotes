@@ -18,6 +18,7 @@
 - [6. Can we create an object of abstract class?](#6-can-we-create-an-object-of-abstract-class--prime-tech) [Prime Tech]
 
 
+
 <br>
 
 ## 1. Difference between Abstraction and Encapsulation ? Explain with examples. (BrainStation)
@@ -419,5 +420,180 @@ class User {
 * 🔶 **Traits:** যখন আপনি শুধু কিছু মেথড বা logic বিভিন্ন ক্লাসে reuse করতে চান, সম্পর্ক না থাকলেও।
 
 
+<br>
+
+## 8. Tell me about  `__call` and `__callStatic` Methods ? `(TheSoftKing)`
 
 
+## 🧠 Magic Methods কী?
+
+**Magic Methods** হলো PHP-তে কিছু special method যেগুলোর নামের আগে ও পরে ডাবল আন্ডারস্কোর থাকে (`__`)
+যেমন – `__construct`, `__get`, `__set`, `__call`, `__callStatic` ইত্যাদি।
+
+ওরা স্বয়ংক্রিয়ভাবে PHP দ্বারা কল হয় নির্দিষ্ট পরিস্থিতিতে।
+
+---
+
+## 🔹 `__call()` Method
+
+> যখন **object context (instance)** এ এমন কোনো method কল করা হয় যা **অস্তিত্ব নেই**, তখন `__call()` method ট্রিগার হয়।
+
+### 📘 Syntax:
+
+```php
+public function __call($method, $arguments)
+```
+
+* `$method` = কল করা মেথডের নাম (string)
+* `$arguments` = মেথডে পাঠানো argument গুলো (array)
+
+---
+
+### 🔍 Example (Instance Context)
+
+```php
+class Test
+{
+    public function __call($method, $arguments)
+    {
+        echo "You called method: $method with arguments: ";
+        print_r($arguments);
+    }
+}
+
+$obj = new Test();
+$obj->greet('Irfan', 'Chowdhury');
+```
+
+🔸 Output:
+
+```
+You called method: greet with arguments: Array ( [0] => Irfan [1] => Chowdhury )
+```
+
+👉 এখানে `greet()` নামের method আসলে নেই, তাই PHP স্বয়ংক্রিয়ভাবে `__call()` কল করেছে।
+
+---
+
+## 🔹 `__callStatic()` Method
+
+> যখন **static context** এ এমন কোনো method কল করা হয় যা **অস্তিত্ব নেই**, তখন `__callStatic()` method ট্রিগার হয়।
+
+### 📘 Syntax:
+
+```php
+public static function __callStatic($method, $arguments)
+```
+
+---
+
+### 🔍 Example (Static Context)
+
+```php
+class Test
+{
+    public static function __callStatic($method, $arguments)
+    {
+        echo "Static call to method: $method with args: ";
+        print_r($arguments);
+    }
+}
+
+Test::hello('Laravel', 'Developer');
+```
+
+🔸 Output:
+
+```
+Static call to method: hello with args: Array ( [0] => Laravel [1] => Developer )
+```
+
+---
+
+## ⚙️ বাস্তবে কোথায় ব্যবহার হয়?
+
+### 🧩 1. Dynamic method handling
+
+যখন তুমি একই ধরণের অনেকগুলো method চাও কিন্তু আলাদা আলাদা লিখতে চাও না।
+
+```php
+class Report
+{
+    public function __call($method, $args)
+    {
+        if ($method === 'daily') {
+            return "Generating Daily Report";
+        }
+        if ($method === 'monthly') {
+            return "Generating Monthly Report";
+        }
+        return "Unknown Report Type";
+    }
+}
+
+$r = new Report();
+echo $r->daily();   // Generating Daily Report
+echo $r->monthly(); // Generating Monthly Report
+```
+
+---
+
+### 🧩 2. Laravel-এ ব্যবহারের বাস্তব উদাহরণ
+
+Laravel এ এই দুইটা Magic Method **বেশ প্রচুরভাবে ব্যবহৃত** হয় —
+বিশেষ করে **Eloquent ORM** ও **Facade system**-এ।
+
+---
+
+#### 🔸 Example: Eloquent ORM
+
+তুমি যখন লেখো:
+
+```php
+User::where('email', 'test@example.com')->first();
+```
+
+তুমি সরাসরি `User` model এ `where()` method লেখোনি, তাই PHP normally error দিত —
+কিন্তু Laravel এর `Model` ক্লাসে `__call()` এবং `__callStatic()` method ব্যবহার করা হয়েছে।
+
+👉 তাই যখন তুমি `User::where()` কল করো —
+
+* `__callStatic()` intercept করে
+* তারপর `Builder` ক্লাসে সেই method পাঠিয়ে দেয়
+* ফলে কাজ হয় dynamic ভাবে!
+
+---
+
+#### 🔸 Example: Facade system
+
+যেমন:
+
+```php
+Cache::get('key');
+```
+
+এখানে `Cache` class-এ আসলে `get()` method নেই।
+Laravel এর Facade ক্লাস `__callStatic()` ব্যবহার করে আসল underlying service container থেকে `get()` কল করে।
+
+---
+
+## 💡 সংক্ষেপে পার্থক্য:
+
+| Method           | কাজ করে যখন                                   | Context | উদাহরণ            |
+| ---------------- | --------------------------------------------- | ------- | ----------------- |
+| `__call()`       | অবজেক্ট instance এ undefined method কল করা হয় | Object  | `$obj->method()`  |
+| `__callStatic()` | static context এ undefined method কল করা হয়   | Static  | `Class::method()` |
+
+---
+
+## 🧩 Interview Short Answer
+
+> `__call()` is triggered when invoking inaccessible or non-existing methods on an object instance.
+> `__callStatic()` is triggered when invoking inaccessible or non-existing static methods on a class.
+>
+> Laravel uses these methods internally for dynamic method calls in **Eloquent** and **Facades**.
+
+---
+
+চাওলে আমি Laravel এর **Model class এর মধ্যে কীভাবে `__call` ও `__callStatic` কাজ করে behind the scenes** সেটা step-by-step দেখিয়ে দিতে পারি (Eloquent query builder flow সহ)।
+তুমি কি সেটা চাও?
