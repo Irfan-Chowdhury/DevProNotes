@@ -52,3 +52,4 @@ Click on the headings below to navigate to the corresponding files:
     - [Set Up Laravel Queue Worker and Email Configuration Using Cron Job on cPanel (With Gmail Forwarding)](pages/articles/laravel-queue-worker-and-email-config.md)
 
 
+1. [How to deploy projects in Vercel](pages/vercel/deploy-projects-vercel.md)
