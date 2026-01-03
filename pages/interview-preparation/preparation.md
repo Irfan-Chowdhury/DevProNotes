@@ -13,6 +13,8 @@
 1. [Design Principle](/pages/interview-preparation/design-principle.md)
 1. [Payment Gateway Related](/pages/interview-preparation/payment-gateway.md)
 1. [General](/pages/interview-preparation/general.md)
+1. [JS Related]()
+    - [Vanilla JS](/pages/interview-preparation/js-related/vanilla_js.md)
 
 
 
