@@ -15,6 +15,11 @@
 1. [General](/pages/interview-preparation/general.md)
 1. [JS Related]()
     - [Vanilla JS](/pages/interview-preparation/js-related/vanilla_js.md)
+    - [Next JS](/pages/interview-preparation/js-related/nextjs.md)
+    - [Redux JS](/pages/interview-preparation/js-related/redux.md)
+    - [Typescript JS](/pages/interview-preparation/js-related/typescript.md)
+    - [Node JS](/pages/interview-preparation/js-related/nodejs.md)
+    - [Express JS](/pages/interview-preparation/js-related/expressjs.md)
 
 
 
