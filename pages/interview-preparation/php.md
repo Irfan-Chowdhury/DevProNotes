@@ -32,6 +32,7 @@
 12. [How to handle the conflict of same method name in multiple `Traits` ?](#how-to-handle-the-conflict-of-same-method-name-in-multiple-traits) `[Brack IT]`
 
 13. [When understand `Static` need to use in PHP/Laravel ?]() `[WeDevs]`
+14. [Explain about : PHP __get, __set, __isset, and __unset]()
 
 
 <br>
@@ -1384,3 +1385,142 @@ Repository, Service class, Controller — এসব static না করে inst
 <div align="center"><strong>─────── ✦ x ✦ ───────</strong></div>
 
 <br>
+
+
+# Q-14 : Explain about : PHP __get(), __set(), __isset(), and __unset() ?
+
+
+আমি এখন কিছু execute করছি না—শুধু সহজভাবে বুঝাচ্ছি।
+
+PHP-এর `__get`, `__set`, `__isset`, `__unset` হলো **magic methods**। এগুলো তখনই অটো কল হয় যখন আপনি **private/protected property** বা **না-থাকা property** কে বাইরে থেকে access/modify/check/unset করতে যান।
+
+---
+
+## 1) `__get($name)`
+
+**কখন কল হয়:**
+আপনি object-এর এমন property পড়তে চান যেটা **private/protected** বা **exist করে না**।
+
+**কাজ:** property এর মান return করা।
+
+```php
+class User {
+    private array $data = ['name' => 'Rahim'];
+
+    public function __get($name) {
+        return $this->data[$name] ?? null;
+    }
+}
+
+$u = new User();
+echo $u->name;   // __get("name") কল হবে
+```
+
+---
+
+## 2) `__set($name, $value)`
+
+**কখন কল হয়:**
+আপনি এমন property-তে value assign করতে চান যেটা **private/protected** বা **exist করে না**।
+
+**কাজ:** value সেট করা।
+
+```php
+class User {
+    private array $data = [];
+
+    public function __set($name, $value) {
+        $this->data[$name] = $value;
+    }
+}
+
+$u = new User();
+$u->name = "Karim";  // __set("name","Karim") কল হবে
+```
+
+---
+
+## 3) `__isset($name)`
+
+**কখন কল হয়:**
+আপনি `isset($obj->prop)` বা `empty($obj->prop)` চালান, আর prop টা **private/protected** বা **exist করে না**।
+
+**কাজ:** property আছে কিনা / null না কিনা true/false return করা।
+
+```php
+class User {
+    private array $data = ['email' => 'a@b.com'];
+
+    public function __isset($name) {
+        return isset($this->data[$name]);
+    }
+}
+
+$u = new User();
+var_dump(isset($u->email)); // __isset("email") কল হবে → true
+```
+
+---
+
+## 4) `__unset($name)`
+
+**কখন কল হয়:**
+আপনি `unset($obj->prop)` চালান, আর prop টা **private/protected** বা **exist করে না**।
+
+**কাজ:** property remove করা।
+
+```php
+class User {
+    private array $data = ['token' => 'xyz'];
+
+    public function __unset($name) {
+        unset($this->data[$name]);
+    }
+}
+
+$u = new User();
+unset($u->token); // __unset("token") কল হবে
+```
+
+---
+
+## একসাথে ছোট ডেমো (ইন্টারভিউতে কাজে দেবে)
+
+```php
+class Profile {
+    private array $data = [];
+
+    public function __get($name) {
+        return $this->data[$name] ?? null;
+    }
+
+    public function __set($name, $value) {
+        $this->data[$name] = $value;
+    }
+
+    public function __isset($name) {
+        return isset($this->data[$name]);
+    }
+
+    public function __unset($name) {
+        unset($this->data[$name]);
+    }
+}
+
+$p = new Profile();
+$p->city = "Dhaka";          // __set
+echo $p->city;               // __get
+var_dump(isset($p->city));   // __isset (true)
+unset($p->city);             // __unset
+var_dump(isset($p->city));   // __isset (false)
+```
+
+---
+
+## Interview tips (খুব কমন প্রশ্ন)
+
+* **এগুলো দিয়ে encapsulation ভাঙা হয় না**—বরং controlled access দেওয়া হয়।
+* Validation দিতে পারেন `__set` এ (যেমন email format check)।
+* বেশি ব্যবহার করলে debugging কঠিন হতে পারে, তাই দরকার ছাড়া overuse না করাই ভালো।
+
+এগুলো Laravel-এ কোথায় দেখা যায়? (Eloquent model-এর attribute access এর মতো behaviour)
